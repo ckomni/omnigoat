@@ -1,0 +1,22 @@
+<div class="window">
+  <h1> All tags </h1>
+</div>
+
+
+<div class="window">
+  <div class="panel-collection">
+    <% @tags.each do |t| %><div class="panel-container" data-posts="<%= t.posts.count %>" data-fraction="<%= t.posts.count.to_f/Post.all.count.to_f %>">
+      <%= link_to tag_path(t.name), class:"tag-link panel", id: "tag-#{t.id}" do %>
+          <div class="panel-details">
+            <div class="tag-name"><%= t.name %></div>
+            <div class="tag-count"><%= pluralize(t.posts.count, 'post') %></div>
+          </div>
+            <% p = t.random_post_with_image %><div
+            class="panel-background mesh",
+            id="post-<%= p.id %>",
+            image_no="0",
+            neighbors="0",
+            data-image="<%= p.random_picture_url %>"></div>
+          <% end %></div><% end %>
+  </div>
+</div>

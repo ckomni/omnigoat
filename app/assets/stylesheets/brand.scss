@@ -1,0 +1,49 @@
+$font-stack: "Oxygen", sans-serif;
+
+$background: rgba(0,0,0, 0.5);
+$background-light: rgba(0,0,0, 0.25);
+$background-dark: rgba(0,0,0, 0.75);
+
+$brand-1: #933;
+$brand-2: #722;
+$brand-3: #300;
+
+$brand-light-1: #fff;
+$brand-light-2: #eee;
+$brand-light-3: #ddd;
+
+$brand-dark-1: #300;
+$brand-dark-2: #200;
+$brand-dark-3: #100;
+
+
+$gradient-1: linear-gradient(to bottom, $brand-3 0%, $brand-dark-3 100%);
+$gradient-2: linear-gradient(to bottom, $brand-light-2 0%, $brand-light-3 100%);
+$gradient-3: radial-gradient(ellipse at center, $brand-1 0%, $brand-3 100%);
+
+@mixin invis-link {
+  text-decoration: none;
+  color: inherit;
+  &:hover{color: inherit}
+  &:active{color: inherit}
+}
+
+@mixin shading {
+  box-shadow: 0 1px 2px rgba(0,0,0, 0.3)
+}
+
+@mixin varbox($base) {
+
+}
+
+@mixin darkbox {
+  color: $brand-light-2;
+  background: $gradient-1;
+  border: 1px solid $brand-light-2;
+}
+
+@mixin lightbox {
+  color: $brand-dark-1;
+  background: $gradient-2;
+  border: 1px solid $brand-light-2;
+}

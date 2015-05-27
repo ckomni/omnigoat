@@ -1,0 +1,4 @@
+//Sets initial opacity for elements with the 'fade' attribute to 0 so they can be faded in with javascript
+[fade],[fade-children] > *{
+  opacity: 0
+}

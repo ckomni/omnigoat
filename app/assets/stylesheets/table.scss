@@ -1,0 +1,36 @@
+@import 'brand';
+
+table {
+  margin: 15px auto;
+  text-align: left;
+  border-spacing: 0;
+  min-width: 300px;
+}
+
+thead {
+  tr {
+    border-bottom: 2px solid $background;
+  }
+}
+
+td,th {
+  padding: 5px;
+}
+
+tbody {
+  tr {
+    &:nth-child(odd) {
+      background: $background;
+    }
+
+    &:nth-child(even) {
+      background: $background-dark;
+    }
+  }
+
+  td {
+    &:nth-child(n+2) {
+      border-left: 2px solid $background;
+    }
+  }
+}

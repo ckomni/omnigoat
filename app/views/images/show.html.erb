@@ -1,0 +1,7 @@
+<div class="window">
+  <h1> Image for "<%= Post.find(@image.post_id).title %>" </h1>
+</div>
+
+  <div class="window">
+    <%= image_tag @image.pic.url, class:"picture"%>
+  </div>

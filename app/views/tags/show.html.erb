@@ -1,0 +1,15 @@
+<div class="window">
+  <h1> Tagged: <%= @tag.name %> </h1>
+</div>
+
+<div class="window">
+  <div class="panel-collection">
+  <% @posts.each_with_index do |p,k| %><%=
+    render 'posts/postlink', p: p, k: k, category: true
+    %><% end %>
+  </div>
+</div>
+
+<% if pages(@tag.posts, @q) > 1 then %>
+  <%= render "posts/pagination", pages: pages(@tag.posts, @q) %>
+<% end %>

@@ -1,0 +1,24 @@
+<% info = info||{} %>
+<div class="panel-container">
+  <%= link_to post_url(p.category.name, p), class:"post-link panel", id: "#{p.category}-#{p.id}", "image_count" => p.images.count do %>
+  <div class="panel-details">
+    <div class="post-title"><%= p.title %></div>
+    <% info.each do |k,i| %>
+      <div class="post-description"> <%= i %></div>
+    <% end %>
+
+  </div>
+
+    <% p.images.each_with_index do |i, k| %><div
+    class="panel-background",
+    id="image-<%= i.id %>",
+    image_no="<%= k %>",
+    neighbors="<%= p.images.count - 1 %>",
+    data-image="<%= i.pic.url %>">
+    </div><% end %>
+
+    <% if info[:category] then %>
+      <div class="panel-background icon", image_no="<%= p.images.count %>", data-image="<%= p.category.icon.url %>"></div>
+    <% end %>
+<% end %>
+</div>

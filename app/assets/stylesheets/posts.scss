@@ -1,0 +1,72 @@
+@import 'brand';
+
+.post-partial {
+  margin: auto;
+  margin-bottom: 75px;
+  border-bottom: $brand-light-3 2px solid;
+}
+
+.postnav {
+  @include invis-link;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-pack: justify;
+  flex-direction: row;
+
+  .page {
+    flex: 1;
+    box-sizing: border-box;
+    display: inline-block;
+  }
+
+  a {
+    @include invis-link;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    &.left:before { content:"\2039";};
+    &.right:before { content:"\203A";}
+    &.first:before { content:"\2039\2039"}
+    &.last:before { content:"\203A\203A";}
+    &.current {
+    }
+    &.pagination {
+      @include lightbox;
+      @include shading;
+    }
+  }
+
+  .quicknav {
+    flex: 1;
+    font-size: 2em;
+  }
+
+  .title {
+    flex: 8;
+  }
+}
+
+.post-copy {
+  padding: 5px;
+  margin: 15px;
+}
+
+.post-details {
+  padding: 5px;
+  margin: 15px;
+}
+
+.post-detail{
+  font-size: 0.8em;
+  color: #bbb;
+  font-style: italic;
+  transition: 0.2s;
+
+  &:hover {
+    color:$brand-1;
+  }
+}

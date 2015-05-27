@@ -1,0 +1,66 @@
+@import 'brand';
+
+.corner-button {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 25px;
+  background: $background;
+  position: relative;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  float: right;
+  border-radius: 0 0 0 15px;
+  width: 25px;
+  height: 25px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+
+  &:before { content:"\00d7"; }
+}
+
+.panel-button {
+  display: inline-block;
+  background: $background;
+  padding: 5px;
+}
+
+.image-nav {
+  margin-bottom: 0px;
+}
+
+.image-link {
+  background-size: cover;
+  background-position: center;
+}
+
+.post-banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 250px;
+  overflow: hidden;
+
+  &.large {
+    height: 33vh;
+    width: 100%;
+    background: $brand-light-3;
+  }
+
+  .image {
+    display: inline-block;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
+  }
+
+  img {
+    
+  }
+
+}
+
+.image {
+  max-width: 100%;
+}

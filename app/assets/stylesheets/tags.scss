@@ -1,0 +1,24 @@
+@import 'brand';
+
+.tag-container {
+  margin: auto;
+  padding: 15px;
+}
+
+.tag {
+  @include lightbox;
+  @include shading;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 15px;
+  margin: 2px;
+  transition: 0.1s ease-in;
+}
+
+
+@media (max-width: 800px) {
+  .tag {padding: 15px;}
+}

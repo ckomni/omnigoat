@@ -1,0 +1,68 @@
+@import 'brand';
+
+.splash {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+
+}
+
+#goat {
+  position: absolute;
+  left: calc(50% - 540px);
+  width: 1080px;
+  height: calc(100% - 50px);
+  background-image: image-url("goat.png");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -100;
+  transition: 0.5s;
+}
+
+#title {
+  color: white;
+  text-align: center;
+  font-size: 48pt;
+  font-weight: 300;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0,0,0, 0.8);
+  top: calc(50% - 80px);
+  position: relative;
+  background: $background-dark;
+  box-shadow: 0px 2px 5px $background;
+  width: 1080px;
+  max-width: calc(100% - 30px);
+  min-width: 800px;
+  margin: auto;
+  cursor: default;
+  z-index: 100;
+  transition: 0.5s;
+}
+
+@media (max-width: 800px) {
+  #goat {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    background-size: cover;
+    opacity: 0.25;
+    transition: 0.5s;
+  }
+
+  #title {
+    min-height: 90px;
+    line-height: 90px;
+    font-size: 24pt;
+    top: calc(50% - 100px);
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    transition: 0.5s;
+  }
+
+
+}

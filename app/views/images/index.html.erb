@@ -1,0 +1,36 @@
+<div class="window">
+  <h1>Images Index</h1>
+</div>
+
+  <div class="window">
+    <% if @images.any? then %>
+
+      <div class="panel-container">
+      <% @images.each do |i| %><div class="image-link panel", id="image-<%= i.id %>" data-image="<%= i.pic.url %>">
+        <%= link_to '', image_path(i), method: "delete", class:"corner-button" %>
+          <div class="image-nav">
+            <%= link_to 'Direct Link', asset_path(i.pic.url), class:"panel-button" %>
+            <%= link_to 'Post', post_path(i.post.category.name, i.post), class:"panel-button" %>
+          </div></div><% end %>
+        </div>
+
+    <% else %>
+      <p> There is nothing here! </p>
+    <% end %>
+  </div>
+
+  <div class="window">
+    <div class="form">
+      <%= form_for @image, :html => {:multipart => true} do |i| %>
+        <div class="group">
+          <%= i.file_field :pic %>
+        </div>
+        <div class="group">
+          <%= i.collection_select :post_id, Post.all, :id, :image_count_string, {}, {:class => "input select"} %>
+        </div>
+        <div class="group">
+          <%= i.submit "Add Picture", class:"input button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>

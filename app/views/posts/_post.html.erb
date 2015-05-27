@@ -1,0 +1,22 @@
+  <% if @post.images.any? then %>
+    <div class="post-banner">
+      <% image = @post.random_picture %>
+      <% if image.id then %>
+        <div class="image" id="image-<%= image.id %>" data-image="<%= image.pic.url %>"></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="post-copy">
+    <%=raw @post.description %>
+  </div>
+
+  <div class="post-details">
+    <div class="post-detail">Updated: <%= @post.time_updated %></div>
+  </div>
+
+<div class="tag-container">
+  <% @post.tags.each do |t| %>
+    <%= link_to t.name, tag_path(t.name), class:"tag" %>
+  <% end %>
+</div>

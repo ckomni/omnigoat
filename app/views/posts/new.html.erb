@@ -1,0 +1,9 @@
+<div class="window">
+  <h1> New Post in <%= @category.name %> </h1>
+</div>
+
+<div class="window form">
+  <%= form_for @post, :html => {:multipart => true} do |f| %>
+    <%= render "form", f: f, button: "Add Post" %>
+  <% end %>
+</div>

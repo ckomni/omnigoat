@@ -1,0 +1,205 @@
+/*
+ *= require_tree .
+ *= require_self
+*/
+
+ @import 'brand';
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+html {
+  margin: 0;
+  overflow-y: scroll;
+}
+
+body {
+  @extend .no-select;
+  background-color: #eee;
+  margin: 0;
+  font-family: $font-stack;
+  transition: -webkit-filter 1s;
+}
+
+a {
+  color: $brand-2;
+
+  &:hover {
+    color: $brand-1;
+  }
+
+  &:active {
+    color: $brand-3;
+  }
+
+}
+
+h1, h2, h3, h4, h5 {
+  display: block;
+  margin: auto;
+  font-weight: 300;
+  text-shadow: 0 1px 1px rgba(0,0,0, 0.1);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.content {
+  margin: auto;
+  padding-top: 50px;
+}
+
+.background {
+  background: $gradient-3;
+  position: fixed;
+  top:-15px;
+  width: 100%;
+  height: 100%;
+  z-index: -1100;
+}
+
+.scanlines{
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: image-url('bg.png');
+  opacity: 0.2;
+  z-index: -1000;
+}
+
+.bottom-fixed {
+  bottom: 0;
+  position: fixed;
+
+}
+
+#debug {
+  @extend .bottom-fixed;
+  @include shading;
+  @include lightbox;
+  padding: 15px;
+	left: 0;
+	margin: 0;
+	z-index: 15;
+  transition: 0.5s;
+}
+
+#actions {
+  @extend .bottom-fixed;
+  display: block;
+  right: 0;
+  margin: auto;
+
+  .actions-category {
+    display: inline-block;
+    padding: 10px;
+    @include shading;
+    @include lightbox;
+  }
+
+  .actions-header {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px;
+  }
+}
+
+.window {
+  width: 1080px;
+  margin: 15px auto;
+  margin-bottom: 30px;
+  padding-bottom: 45px;
+  border-bottom: $brand-light-3 1px solid;
+  transition: 0.5s;
+
+  &.sm {width: 720px};
+  &.lg {width: 1600px};
+
+  h1,h2,h3,h4{
+    padding: 10px;
+    margin-bottom: 0;
+  }
+}
+
+.notification {
+  @include lightbox;
+  @include shading;
+  font-weight: 700;
+  text-align: center;
+  padding: 15px;
+  display: none;
+
+  &.danger {
+    color: #900;
+  }
+  &.success {
+    color: #090;
+  }
+  &.notice {
+    color: #009;
+  }
+}
+
+.badge {
+  @include lightbox;
+  @include shading;
+  //background: $gradient-1;
+  padding: 10px;
+  height: 0.8em;
+  line-height: 0.8em;
+  min-width: 0.8em;
+  vertical-align: baseline;
+  text-align: center;
+  display: inline-block;
+  border-right: 1px solid $brand-light-3;
+
+  &:first-child {
+    border-radius: 50em 0 0 50em;
+    }
+  &:last-child {
+    border-radius: 0 50em 50em 0;
+    border-right: none;
+    }
+  &:only-child {
+    border-radius: 50em 50em 50em 50em;
+    border-right: none;
+    }
+
+}
+
+@media (max-width: 1600px) {
+  .window {
+    width: 770px;
+
+    &.sm {width: 720px};
+    &.lg {width: 720px};
+
+  }
+}
+
+@media (max-width: 800px) {
+  .content {
+    padding-top: 0px;
+  }
+
+  .window {
+    width: 100%;
+    margin-top: 0px;
+    padding-bottom: 30px;
+    border-bottom: solid $brand-light-3 1px;
+    &.sm {width: 100%};
+    &.lg {width: 100%};
+  }
+
+  .bottom-fixed {
+    position: static;
+  }
+}

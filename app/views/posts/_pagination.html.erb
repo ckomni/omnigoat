@@ -1,0 +1,17 @@
+<% size = size||5 %>
+  <div class="postnav">
+    <% size.times do |pos| %><div class="page" pages=<%= size %>>
+      <% page_ref = pagination(size, pos, @page, pages) %>
+      <% case page_ref %>
+      <% when nil %>
+      <% when @page %>
+        <%= link_to pagination(size, pos, @page, pages), params.merge(:page => pagination(size, pos, @page, pages)), class:"pagination current"%>
+      <% when "first" %>
+        <%= link_to "", params.merge(:page => 1), class:"pagination first"%>
+      <% when "last" %>
+        <%= link_to "", params.merge(:page => pages), class:"pagination last"%>
+      <% else %>
+        <%= link_to pagination(size, pos, @page, pages), params.merge(:page => pagination(size, pos, @page, pages)), class:"pagination" %>
+      <% end %>
+    </div><% end %>
+  </div>

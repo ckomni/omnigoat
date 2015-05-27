@@ -1,0 +1,14 @@
+<%- title "omnigoat design" %>
+
+<% @posts.each do |p| %>
+  <div class="window" fade>
+    <%= link_to post_url(p.category.name, p), class:"postnav" do %><div class="title"><h1><%= p.title %></h1></div><% end %>
+    <%= render 'posts/post', :@post => p %>
+  </div>
+<% end %>
+
+<div class="window">
+  <% if pages(Post.all, @q) > 1 then %>
+    <%= render "posts/pagination", pages: pages(Post.all, @q), size: 7 %>
+  <% end %>
+</div>

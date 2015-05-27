@@ -1,0 +1,13 @@
+<div class="window">
+  <h1> Editing Post </h1>
+</div>
+
+<div class="window">
+
+  <div class="form">
+    <%= form_for @post, url: post_path(@post.category.name, @post), :html => {:multipart => true} do |f| %>
+      <%= render "form", f: f, button: "Update Post" %>
+    <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,64 @@
+<%- title "#{@post.title} - omnigoat design" %>
+
+<div class="post-banner large">
+<% if @post.images.any? then %>
+    <% @post.images.each do |i,n| %>
+      <% if i.id then %>
+        <div class="image" id="image-<%= i.id %>" data-image="<%= i.pic.url %>"></div>
+      <% end %>
+    <% end %>
+<% else %>
+    <div class="panel-background icon" id="category" data-image="<%= @post.category.icon.url %>"></div>
+<% end %>
+</div>
+
+<div class="window">
+<div class="postnav">
+  <div class="quicknav">
+    <% if @post.previous(@post.category.posts.order(created_at: :desc)) then %>
+      <%= link_to "", post_path(@post.category.name, @post.previous(@post.category.posts.order(created_at: :desc))), class:"left"%>
+    <% end %>
+  </div><div class="title"><h1><%= @post.title %></h1></div><div class="quicknav">
+    <% if @post.next(@post.category.posts.order(created_at: :asc)) then %>
+      <%= link_to "", post_path(@post.category.name, @post.next(@post.category.posts.order(created_at: :asc))), class:"right" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="post-copy">
+  <%=raw @post.description %>
+</div>
+
+<div class="post-details">
+  <div class="post-detail">Posted: <%= @post.time_created %></div>
+  <% if @post.time_created != @post.time_updated then %>
+  <div class="post-detail">Updated: <%= @post.time_updated %></div>
+  <% end %>
+</div>
+
+<div class="tag-container">
+<% @post.tags.each do |t| %>
+  <%= link_to t.name, tag_path(t.name), class:"tag" %>
+<% end %>
+</div>
+
+</div>
+
+<% if @posts then %>
+  <div class="window" id="related">
+    <h2>More posts</h2>
+    <div class="panel-collection">
+      <% @posts.each do |p| %>
+      <%= render 'posts/postlink', p: p, :info => {:category => p.category.name.humanize, :time => p.time_updated} %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :actions do %>
+  <div class="actions-category">
+    <div class="actions-header">Post Actions</div>
+    <%= link_to "Edit", edit_post_path(@category.name, @post), class:"tag" %>
+    <%= link_to "Delete", post_path(@category.name, @post), method: "delete", class:"tag" %>
+  </div>
+<% end %>

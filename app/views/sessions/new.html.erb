@@ -1,0 +1,20 @@
+<div class="window">
+  <h1>Log in</h1>
+</div>
+
+<div class="window">
+  <div class="form">
+    <%= form_for :session, url: login_path do |f| %>
+
+      <div class="group">
+        <%= f.label :password, class:"label" %>
+        <%= f.password_field :password, class:"input field" %>
+      </div>
+
+      <div class="group">
+        <%= f.submit "Log In", class:"input button" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
