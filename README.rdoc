@@ -1,28 +1,5 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+For those who have stumbled upon this repository, this is the infrastructure for my portfolio website in progress. Although I don't see any intrinsic value of this project for anyone other than myself, I do appreciate any constructive notes or advice on building in Rails (keeping in mind that this is unfinished as of 5/27/15).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Please contact me at kylejhalvorson@gmail.com if you have any feedback, or if you are interested in hiring me as a developer or front-end designer.

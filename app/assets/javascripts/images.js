@@ -2,11 +2,14 @@ $(document).ready(function(){
   // use jquery to assign a background-image to divs with a data-image attribute
   $("[data-image]").each(function(index){
     var i = $(this);
-    var i_url = i.attr('data-image');
-    i.css({"background-image": "url(" + i_url + ")"})
+    var url = i.attr('data-image');
+    var q = i.attr('image_no');
+    i.css({
+      "background-image": "url(" + url + ")",
+      "z-index": -q,
+      top: -q*100 + "%"
+      })
   });
-
-  updateImages();
 
   $(".panel-background,.image-link").each(function(index){
     var i = $(this);
@@ -18,12 +21,10 @@ $(document).ready(function(){
     });
   });
 
-  var animating = false;
-
-  // Image switching function for mouse hovering over panel
+  // Image switching function for mouse hovering over post-link panel
   $(".panel").mouseenter(function(){
     $(".panel-background.icon", this).css({transform: "scale(1.2)", opacity: 0.4});
-    $(".panel-background", this).each(function(index){
+    $("[data-image]", this).each(function(index){
       var i = $(this);
       var n = Number(i.attr('neighbors'));
       // If the panel background has any neighbors, execute image-shuffle code
@@ -46,11 +47,13 @@ $(document).ready(function(){
 
   $(".panel").mouseleave(function(){
     $(".panel-background.icon", this).css({transform: "scale(1)", opacity: 0.2});
-    $(".panel-background", this).each(function(index){
+    $("[data-image]", this).each(function(index){
       var i = $(this);
     })
 
   })
+
+  updateImages();
 
 })
 
@@ -58,7 +61,7 @@ $(window).resize(function(){
   updateImages();
 })
 
-// given an object that has a background image, updates the image
+// Function that updates all images in the post banner
 function updateImages() {
   $(".post-banner .image").each(function(index){
     var container = $(this)

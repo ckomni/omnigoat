@@ -2,12 +2,15 @@
 
 .navbar {
   display: flex;
+  flex-wrap: wrap;
   position: fixed;
   box-sizing: border-box;
   background: $gradient-1;
+  overflow: hidden;
   color: white;
   width: 100%;
-  width: 100%;
+  height: 35px;
+  line-height: 35px;
   user-select: none;
   -webkit-user-select: none;
   z-index: 1000;
@@ -15,12 +18,22 @@
 
   .btn {
     box-sizing: border-box;
+    align-self: stretch;
     display: inline-block;
     vertical-align: top;
     height: 100%;
-    flex: 1;
     border-right: 1px solid $background;
     text-align: center;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
   }
 
   .header {
@@ -33,16 +46,10 @@
     vertical-align: top;
   }
 
-  .logout {
-    display: inline-block;
-  }
-
   a {
     background: transparent;
     color: #b99;
-    font-weight: 700;
     display: inline-block;
-    line-height: 50px;
     padding: 0px 15px;
     vertical-align: middle;
     text-decoration: none;
@@ -59,7 +66,8 @@
 }
 
 .count-badge {
-  display: inline-block;
+  @include lightbox;
+  display: none;
   text-align: center;
   vertical-align: middle;
   font-size: 10pt;
@@ -67,9 +75,6 @@
   line-height: 10px;
   height: 10px;
   min-width: 10px;
-  background: #400;
-  color: #b00;
-  border: solid #500 1px;
   border-radius: 50em;
   padding: 5px;
 }

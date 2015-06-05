@@ -2,9 +2,9 @@
 
 <div class="post-banner large">
 <% if @post.images.any? then %>
-    <% @post.images.each do |i,n| %>
+    <% @post.images.each_with_index do |i,n| %>
       <% if i.id then %>
-        <div class="image" id="image-<%= i.id %>" data-image="<%= i.pic.url %>"></div>
+        <div class="image" id="image-<%= i.id %>" neighbors="<%= @post.images.count - 1 %>" image_no="<%=n%>" data-image="<%= i.pic.url %>"></div>
       <% end %>
     <% end %>
 <% else %>

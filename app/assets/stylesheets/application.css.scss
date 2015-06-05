@@ -21,7 +21,6 @@ body {
   background-color: #eee;
   margin: 0;
   font-family: $font-stack;
-  transition: -webkit-filter 1s;
 }
 
 a {
@@ -51,15 +50,22 @@ h2 {
   margin-bottom: 10px;
 }
 
+blockquote {
+  border-left: 4px solid #900;
+  padding-left: 15px;
+  margin-left: 15px;
+  font-style: italic;
+  color: #999;
+}
+
 .content {
   margin: auto;
-  padding-top: 50px;
+  padding-top: 35px;
 }
 
 .background {
   background: $gradient-3;
   position: fixed;
-  top:-15px;
   width: 100%;
   height: 100%;
   z-index: -1100;
@@ -178,7 +184,6 @@ h2 {
 @media (max-width: 1600px) {
   .window {
     width: 770px;
-
     &.sm {width: 720px};
     &.lg {width: 720px};
 

@@ -3,8 +3,13 @@
 </div>
 
 <div class="splash">
-  <div id="goat"></div>
   <div id="title">
     <span>omnigoat design</span>
   </div>
+  <div class="bubble-container">
+    <% @images.each do |i| %>
+      <%= link_to "", post_path(i.post.category.name, i.post.id), class: "image-bubble", :data => {:image => i.pic.url} %>
+    <% end %>
+  </div>
+  <div id="goat"></div>
 </div>
