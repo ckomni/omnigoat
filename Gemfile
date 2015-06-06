@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'execjs'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # bootstrap css styling
 # gem 'bootstrap-sass', '3.3.3'
