@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Person.create(firstname: 'Kyle', lastname: 'Halvorson', dateofbirth: Date.parse("14/09/1991"))
+Category.create(name: 'news')
