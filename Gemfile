@@ -46,8 +46,8 @@ gem 'foreigner'
 
 group :production do
   gem 'puma'
-
   gem 'pg'
+  gem 'dotenv-rails'
 end
 
 group :development, :test do
