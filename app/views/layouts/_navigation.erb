@@ -1,6 +1,6 @@
 <% content_for :navigation do %>
   <% Category.all.each do |c| %>
-    <%= link_to categories_path(c.name), class:"btn" do %>
+    <%= link_to category_path(c.name), class:"btn" do %>
       <span><%= c.name %></span> <span class="icon" data-image="<%=c.icon.url%>"></span>
     <% end %>
   <% end %>
