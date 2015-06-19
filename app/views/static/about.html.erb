@@ -16,41 +16,5 @@
     <p>Kyle Halvorson is a graphic designer and aspiring web developer born and raised in California.</p>
   </div>
 
-  <table id="stats">
-    <thead>
-      <tr>
-        <th>Skill</th>
-        <th>Level</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% if authorized? then %>
-        <%= form_tag('/skills', remote: true, id:"skills") do %>
-          <tr>
-            <td class="table-input">
-              <%= text_field_tag :label %>
-            </td>
-            <td class="table-input">
-                <%= select_tag(:level, options_for_select(1..10)) %>
-            </td>
-          </tr>
-        <tr>
-          <td colspan=2 class="table-input">
-            <%= submit_tag("Add new skill", class:"input button") %>
-          </td>
-        </tr>
-        <% end %>
-      <% end %>
-    <% @kyle.skills.each do |s| %>
-      <tr>
-        <td><%= s.label %></td>
-        <td><%= s.level %></td>
-      </tr>
-    <% end %>
-
-
-
-    </tbody>
-  </table>
   </div>
 </div>
