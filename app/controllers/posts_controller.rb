@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     else
       @q = Rails.application.config.posts_per_page
     end
-    @posts = Post.all.order(updated_at: :desc).offset((@page - 1) * @q).limit(@q)
+    @posts = Post.includes(:category, :images, :tags).all.order(updated_at: :desc).offset((@page - 1) * @q).limit(@q).includes(:category)
   end
 
   def new
@@ -55,8 +55,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @category = Category.find_by(name: params[:category])
-    @post = Post.find(params[:id])
+    puts "[A] looking for category in params[:category]"
+    @category = Category.includes(:posts).find_by(name: params[:category])
+    puts "[A] -----------------------------------------"
+    puts "[B] looking for post in params[:id]"
+    @post = Post.includes(:category, :images, :tags).find(params[:id])
+    puts "[B] -----------------------------------------"
     session[:viewed] = session[:viewed]||[]
     if session[:viewed].include?(@post.id)
       pos = session[:viewed].index(@post.id)
@@ -64,7 +68,9 @@ class PostsController < ApplicationController
     else
       session[:viewed].unshift(@post.id)
     end
-    @posts = Post.find(Post.freshness(session[:viewed])[1..4])
+    puts "[C] looking for first 4 posts by freshness"
+    @posts = Post.includes(:category, :images, :tags).find(Post.freshness(session[:viewed])[0..3])
+    puts "[C] -----------------------------------------"
   end
 
   def destroy

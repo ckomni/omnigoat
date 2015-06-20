@@ -2,7 +2,7 @@
 
 .navbar {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: no-wrap;
   position: fixed;
   box-sizing: border-box;
   background: $gradient-1;
@@ -16,14 +16,45 @@
   z-index: 1000;
   @include shading;
 
+  .permanent {
+    display: flex;
+    flex: 1;
+    align-self: flex-start;
+  }
+
+  .categories {
+    display: flex;
+    align-self: flex-end;
+    align-items: flex-end;
+  }
+
   .btn {
     box-sizing: border-box;
-    align-self: stretch;
     display: inline-block;
     vertical-align: top;
     height: 100%;
-    border-right: 1px solid $background;
+    border-right: 1px solid rgba(0,0,0, 0.3);
+    border-left: 1px solid rgba(255,255,255, 0.1);
     text-align: center;
+
+    &.category {
+      justify-content: flex-end;
+    }
+
+    &.brand {
+      padding: 0px;
+      width: 48px;
+      img {
+        transition: 0.2s;
+        -webkit-filter: brightness(0.2);
+        -webkit-filter: contrast(2);
+        &:hover {
+        -webkit-filter: brightness(1);
+        -webkit-filter: contrast(1);
+        }
+      }
+
+    }
   }
 
   .icon {

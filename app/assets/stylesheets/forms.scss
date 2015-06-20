@@ -1,24 +1,27 @@
 @import 'brand';
 
 .button {
+  @include darkbox;
+  @include shading;
   box-sizing: border-box;
-  background: $background;
   display: inline-block;
   font-size: 18pt;
   font-weight: 500;
   cursor: pointer;
   padding: 15px;
   text-align: center;
+
+  &.lg {
+    display: block;
+    width: 100%;
+  }
 }
 
-.button.lg {
-  display: block;
-  width: 100%;
-}
 
 .form {
+  @include lightbox;
+  @include shading;
   font-size: 16pt;
-  border: dashed 2px $background;
   padding: 15px;
   margin-top: 15px;
 

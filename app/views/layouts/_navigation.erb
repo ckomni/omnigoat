@@ -1,14 +1,20 @@
 <% content_for :navigation do %>
   <% Category.all.each do |c| %>
-    <%= link_to category_path(c.name), class:"btn" do %>
-      <span><%= c.name %></span> <span class="icon" data-image="<%=c.icon.url%>"></span>
+    <%= link_to posts_path(c.name), class:"btn category" do %>
+      <span><%= c.name %></span>
     <% end %>
   <% end %>
 <% end %>
-<nav class="navbar"><%=
-  link_to 'omnigoat design', all_path, class: "brand btn" %><%=
-  link_to 'portfolio', categories_path, class:"btn" %><%=
-  link_to 'about', about_path, class:"btn" %><%=
-  link_to 'contact', contact_path, class:"btn" %><%=
-  content_for :navigation %>
+<nav class="navbar">
+  <div class="permanent">
+    <%= link_to all_path, class: "brand btn" do %>
+      <%= image_tag "goat-icon.png" %>
+    <% end %>
+    <%= link_to 'about', about_path, class:"btn" %>
+    <%= link_to 'contact', contact_path, class:"btn" %>
+  </div>
+  <div class="categories">
+    <%= link_to 'portfolio', categories_path, class:"btn" %>
+    <%= content_for :navigation %>
+  </div>
 </nav>

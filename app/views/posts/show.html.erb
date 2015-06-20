@@ -15,12 +15,12 @@
 <div class="window">
 <div class="postnav">
   <div class="quicknav">
-    <% if @post.previous(@post.category.posts.order(created_at: :desc)) then %>
-      <%= link_to "", post_path(@post.category.name, @post.previous(@post.category.posts.order(created_at: :desc))), class:"left"%>
+    <% if @post.previous(@category.posts.order(created_at: :desc)) then %>
+      <%= link_to "", post_path(@category.name, @post.previous(@category.posts.order(created_at: :desc))), class:"left"%>
     <% end %>
   </div><div class="title"><h1><%= @post.title %></h1></div><div class="quicknav">
-    <% if @post.next(@post.category.posts.order(created_at: :asc)) then %>
-      <%= link_to "", post_path(@post.category.name, @post.next(@post.category.posts.order(created_at: :asc))), class:"right" %>
+    <% if @post.next(@category.posts.order(created_at: :asc)) then %>
+      <%= link_to "", post_path(@category.name, @post.next(@category.posts.order(created_at: :asc))), class:"right" %>
     <% end %>
   </div>
 </div>
