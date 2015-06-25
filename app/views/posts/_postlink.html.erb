@@ -1,5 +1,5 @@
 <% info = info||{}
-puts "[L] adding postlink..." %>
+puts "[L] rendering postlink panel..." %>
 <div class="panel-container">
   <%= link_to post_url(p.category.name, p), class:"post-link panel", id: "#{p.category}-#{p.id}", "image_count" => p.images.count do %>
   <div class="panel-details">

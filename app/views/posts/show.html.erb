@@ -2,11 +2,8 @@
 
 <div class="post-banner large">
 <% if @post.images.any? then %>
-    <% @post.images.each_with_index do |i,n| %>
-      <% if i.id then %>
-        <div class="image" id="image-<%= i.id %>" neighbors="<%= @post.images.count - 1 %>" image_no="<%=n%>" data-image="<%= i.pic.url %>"></div>
-      <% end %>
-    <% end %>
+    <% image = @post.random_picture %>
+      <div class="image" id="image-<%= image.id %>" neighbors="0" image_no="0" data-image="<%= image.pic.url %>"></div>
 <% else %>
     <div class="panel-background icon" id="category" data-image="<%= @post.category.icon.url %>"></div>
 <% end %>
