@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.includes(:posts)
     params[:page].to_i > 1 ? @page = params[:page].to_i : @page = 1
     case
     when params[:q].to_i > 0
@@ -53,7 +53,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by(name: params[:category])
+    @category = Category.includes(:posts).find_by(name: params[:category])
     params[:page].to_i > 1 ? @page = params[:page].to_i : @page = 1
     case
     when params[:q].to_i > 0

@@ -1,20 +1,20 @@
 <% content_for :navigation do %>
   <% Category.all.each do |c| %>
     <%= link_to posts_path(c.name), class:"btn category" do %>
-      <span><%= c.name %></span>
+      <span><%= c.name %></span><span class="count-badge"><%= c.posts.count %></span>
     <% end %>
   <% end %>
 <% end %>
 <nav class="navbar">
-  <div class="permanent">
-    <%= link_to all_path, class: "brand btn" do %>
-      <%= image_tag "goat-icon.png" %>
-    <% end %>
-    <%= link_to 'about', about_path, class:"btn" %>
-    <%= link_to 'contact', contact_path, class:"btn" %>
-  </div>
-  <div class="categories">
-    <%= link_to 'portfolio', categories_path, class:"btn" %>
-    <%= content_for :navigation %>
+  <div class="navlinks">
+    <div class="permanent">
+      <%= link_to "", all_path, class: "brand btn" %>
+      <%= link_to 'about', about_path, class:"btn" %>
+      <%= link_to 'contact', contact_path, class:"btn" %>
+    </div>
+    <div class="categories">
+      <%= link_to 'portfolio', categories_path, class:"btn" %>
+      <%= content_for :navigation %>
+    </div>
   </div>
 </nav>

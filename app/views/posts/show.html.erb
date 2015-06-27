@@ -1,4 +1,19 @@
-<%- title "#{@post.title} - omnigoat design" %>
+<%- title "#{@post.title} - Omnigoat Design" %>
+
+<% content_for :head do %>
+  <meta property="og:title"  content="<%= @post.title %>" />
+  <meta property="og:site_name"  content= "Omnigoat Design" />
+  <meta property="og:image"  content="<%= @post.random_picture_url %>" />
+  <meta property="og:type"   content="<%= @category.name %>" />
+<% end %>
+
+<% content_for :actions do %>
+  <div class="actions-category">
+    <div class="actions-header">Post Actions</div>
+    <%= link_to "Edit", edit_post_path(@category.name, @post), class:"tag" %>
+    <%= link_to "Delete", post_path(@category.name, @post), method: "delete", class:"tag" %>
+  </div>
+<% end %>
 
 <div class="post-banner large">
 <% if @post.images.any? then %>
@@ -49,13 +64,5 @@
       <%= render 'posts/postlink', p: p, :info => {:category => p.category.name.humanize, :time => p.time_updated} %>
       <% end %>
     </div>
-  </div>
-<% end %>
-
-<% content_for :actions do %>
-  <div class="actions-category">
-    <div class="actions-header">Post Actions</div>
-    <%= link_to "Edit", edit_post_path(@category.name, @post), class:"tag" %>
-    <%= link_to "Delete", post_path(@category.name, @post), method: "delete", class:"tag" %>
   </div>
 <% end %>

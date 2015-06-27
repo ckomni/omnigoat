@@ -47,3 +47,33 @@ $gradient-3: radial-gradient(ellipse at center, $brand-1 0%, $brand-3 100%);
   background: $gradient-2;
   border: 1px solid $brand-light-2;
 }
+
+@mixin no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+// Responsiveness Breakpoints
+
+$sm-break: 720px;
+$md-break: 1080px;
+$lg-break: 1600px;
+
+@mixin small {
+  @media (max-width: $sm-break) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (max-width: $md-break) and (min-width: $sm-break + 1) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (max-width: $lg-break) and (min-width: $md-break + 1) {
+    @content;
+  }
+}

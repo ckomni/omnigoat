@@ -5,19 +5,12 @@
 
  @import 'brand';
 
-.no-select {
-  user-select: none;
-  -webkit-user-select: none;
-  cursor: default;
-}
-
 html {
   margin: 0;
   overflow-y: scroll;
 }
 
 body {
-  @extend .no-select;
   background-color: #eee;
   margin: 0;
   font-family: $font-stack;
@@ -61,6 +54,7 @@ blockquote {
 .content {
   margin: auto;
   padding-top: 35px;
+  @include small {padding-top: 0px}; // remove the padding that accomodates the scrollbar
 }
 
 .background {
@@ -84,7 +78,7 @@ blockquote {
 .bottom-fixed {
   bottom: 0;
   position: fixed;
-
+  @include small {position: static};
 }
 
 #debug {
@@ -119,12 +113,20 @@ blockquote {
 }
 
 .window {
-  width: 1080px;
   margin: 15px auto;
   margin-bottom: 30px;
   padding-bottom: 45px;
   border-bottom: $brand-light-3 1px solid;
   transition: 0.5s;
+  width: 1080px;
+  @include small {
+    width: 100%;
+    margin-top: 0px;
+    padding-bottom: 30px;
+    border-bottom: solid $brand-light-3 1px;
+    };
+  @include medium {max-width: 720px};
+  @include large {max-width: 720px};
 
   &.sm {width: 720px};
   &.lg {width: 1600px};
@@ -157,7 +159,6 @@ blockquote {
 .badge {
   @include lightbox;
   @include shading;
-  //background: $gradient-1;
   padding: 10px;
   height: 0.8em;
   line-height: 0.8em;
@@ -179,32 +180,4 @@ blockquote {
     border-right: none;
     }
 
-}
-
-@media (max-width: 1600px) {
-  .window {
-    width: 770px;
-    &.sm {width: 720px};
-    &.lg {width: 720px};
-
-  }
-}
-
-@media (max-width: 800px) {
-  .content {
-    padding-top: 0px;
-  }
-
-  .window {
-    width: 100%;
-    margin-top: 0px;
-    padding-bottom: 30px;
-    border-bottom: solid $brand-light-3 1px;
-    &.sm {width: 100%};
-    &.lg {width: 100%};
-  }
-
-  .bottom-fixed {
-    position: static;
-  }
 }
