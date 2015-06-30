@@ -16,9 +16,7 @@
   padding: 5px 15px;
   margin: 2px;
   transition: 0.1s ease-in;
-}
-
-
-@media (max-width: 800px) {
-  .tag {padding: 15px;}
+  @include small {
+    padding: 15px;
+  }
 }

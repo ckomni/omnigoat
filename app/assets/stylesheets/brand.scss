@@ -51,7 +51,6 @@ $gradient-3: radial-gradient(ellipse at center, $brand-1 0%, $brand-3 100%);
 @mixin no-select {
   user-select: none;
   -webkit-user-select: none;
-  cursor: default;
 }
 
 // Responsiveness Breakpoints

@@ -48,6 +48,9 @@
 
     &.category {
       justify-content: flex-end;
+      @include small {
+        display: none;
+      }
     }
 
     &.brand {

@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
     else
       @q = Rails.application.config.posts_per_page
     end
-    @posts = Post.all.order(updated_at: :desc).offset((@page - 1) * @q).limit(@q)
+    @posts = Post.all.includes(:images, :category).order(updated_at: :desc).offset((@page - 1) * @q).limit(@q)
     @category = Category.new
   end
 

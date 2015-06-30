@@ -39,6 +39,7 @@
   justify-content: center;
   height: 250px;
   overflow: hidden;
+  perspective: 500px;
 
   &.large {
     height: calc(250px + 25vh);
@@ -53,7 +54,7 @@
     position: relative;
     display: block;
     background-color: black;
-    background-size: cover;
+    background-size: 110%;
     background-position: center;
     background-repeat: no-repeat;
   }

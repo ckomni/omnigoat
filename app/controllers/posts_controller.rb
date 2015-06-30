@@ -55,9 +55,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    puts "[A] looking for category in params[:category]"
     @category = Category.includes(:posts).find_by(name: params[:category])
-    puts "[B] looking for post in params[:id]"
     @post = Post.includes(:category, :images, :tags).find(params[:id])
     session[:viewed] = session[:viewed]||[] # load or initialize list of viewed posts
     if session[:viewed].include?(@post.id)
@@ -66,8 +64,7 @@ class PostsController < ApplicationController
     else
       session[:viewed].unshift(@post.id)
     end
-    puts "[C] looking for first 4 posts by freshness"
-    @posts = Post.includes(:category, :images).find(Post.freshness(session[:viewed])[1..4])
+    @posts = Post.all.includes(:category, :images).find(Post.freshness(session[:viewed])[1..4])
   end
 
   def destroy

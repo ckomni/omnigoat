@@ -16,6 +16,10 @@ body {
   font-family: $font-stack;
 }
 
+p {
+  line-height: 1.8em;
+}
+
 a {
   color: $brand-2;
 
@@ -126,15 +130,19 @@ blockquote {
     border-bottom: solid $brand-light-3 1px;
     };
   @include medium {max-width: 720px};
-  @include large {max-width: 720px};
-
-  &.sm {width: 720px};
-  &.lg {width: 1600px};
+  @include large {max-width: 1024px};
 
   h1,h2,h3,h4{
     padding: 10px;
     margin-bottom: 0;
   }
+}
+
+.footer {
+  font-family: arial;
+  text-align: center;
+  color: #999;
+  margin: 5px;
 }
 
 .notification {

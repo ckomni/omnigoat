@@ -2,7 +2,9 @@
     <div class="post-banner">
       <% if @post.images.any? then %>
         <% image = @post.random_picture %>
-        <div class="image" id="image-<%= image.id %>" data-image="<%= image.pic.url %>"></div>
+        <%= link_to post_url(@post.category.name, @post) do %>
+          <div class="image" id="image-<%= image.id %>" data-image="<%= image.pic.url %>"></div>
+        <% end %>
       <% end %>
     </div>
   <% end %>

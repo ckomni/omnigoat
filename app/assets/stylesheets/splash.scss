@@ -20,6 +20,16 @@
   background-repeat: no-repeat;
   z-index: -100;
   transition: 0.5s;
+
+  @include small {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    background-size: cover;
+    opacity: 0.25;
+    transition: 0.5s;
+  }
+
 }
 
 #title {
@@ -40,19 +50,8 @@
   cursor: default;
   z-index: 100;
   transition: 0.5s;
-}
 
-@media (max-width: 800px) {
-  #goat {
-    position: fixed;
-    width: 100%;
-    left: 0;
-    background-size: cover;
-    opacity: 0.25;
-    transition: 0.5s;
-  }
-
-  #title {
+  @include small {
     min-height: 90px;
     line-height: 90px;
     font-size: 24pt;
@@ -62,6 +61,4 @@
     max-width: 100%;
     transition: 0.5s;
   }
-
-
 }
