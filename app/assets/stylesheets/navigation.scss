@@ -20,10 +20,10 @@
   display: flex;
   flex-wrap: no-wrap;
   margin: auto;
-  width: 1080px;
+  width: 1024px;
   @include small {width: 100%};
   @include medium {max-width: 720px};
-  @include large {max-width: 720px};
+  @include large {max-width: 1024px};
 
   .permanent {
     display: flex;

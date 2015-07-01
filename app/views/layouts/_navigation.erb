@@ -1,5 +1,5 @@
 <% content_for :navigation do %>
-  <% Category.all.each do |c| %>
+  <% Category.all.order(:name).each do |c| %>
     <%= link_to posts_path(c.name), class:"btn category" do %>
       <span><%= c.name %></span><span class="count-badge"><%= c.posts.count %></span>
     <% end %>

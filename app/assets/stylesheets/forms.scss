@@ -3,6 +3,7 @@
 .button {
   @include darkbox;
   @include shading;
+  @include no-select;
   box-sizing: border-box;
   display: inline-block;
   font-size: 18pt;
@@ -52,16 +53,16 @@
 }
 
 .input {
-  color: white;
   padding: 15px;
   border: none;
   display: block;
   width: 100%;
 
   &:focus {
+    box-shadow: 0px 0px 2px $brand-1;
     outline: none;
-    box-shadow: 0px 0px 2px white;
   }
+
 }
 
 .field {
