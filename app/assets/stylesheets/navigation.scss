@@ -1,41 +1,35 @@
 @import 'brand';
 
+// Physical bar that spans the page width. Becomes static at small size
 .navbar {
   @include shading;
   background: $gradient-1;
   position: fixed;
   box-sizing: border-box;
-  overflow: hidden;
   color: white;
   z-index: 1000;
   height: 35px;
   width: 100%;
   line-height: 35px;
-  user-select: none;
-  -webkit-user-select: none;
-  @include small {position: static};
-}
+  @include no-select;
+  @include small {
+    position: static;
+    height: auto;
+  };
 
-.navlinks {
-  display: flex;
-  flex-wrap: no-wrap;
-  margin: auto;
-  width: 1024px;
-  @include small {width: 100%};
-  @include medium {max-width: 720px};
-  @include large {max-width: 1024px};
-
-  .permanent {
+  // Container for the links on the navbar. Responds to window width.
+  .navlinks {
     display: flex;
-    flex: 1;
-    align-self: flex-start;
+    flex-wrap: no-wrap;
+    margin: auto;
+    width: 1024px;
+    @include small {width: 100%};
+    @include medium {max-width: 720px};
+    @include large {max-width: 1024px};
   }
 
-  .categories {
-    display: flex;
-    align-self: flex-end;
-    align-items: flex-end;
-  }
+  // subset of links with dropdowns
+  .nav-section {}
 
   .btn {
     box-sizing: border-box;
@@ -45,12 +39,19 @@
     border-right: 1px solid rgba(0,0,0, 0.3);
     border-left: 1px solid rgba(255,255,255, 0.1);
     text-align: center;
+    background: transparent;
+    color: $brand-light-3;
+    padding: 0px 15px;
+    vertical-align: middle;
+    text-decoration: none;
+    transition: 0.2s;
 
-    &.category {
-      justify-content: flex-end;
-      @include small {
-        display: none;
-      }
+    &:hover, &[active] {
+      border-left: 1px solid rgba(0,0,0, 0.3);
+      border-right: 1px solid rgba(255,255,255, 0.1);
+      color: white;
+      background: black;
+      transition: 0.2s;
     }
 
     &.brand {
@@ -60,16 +61,6 @@
       background-size: auto;
       background-position: center;
       background-repeat: no-repeat;
-      img {
-        transition: 0.2s;
-        -webkit-filter: brightness(0.2);
-        -webkit-filter: contrast(2);
-        &:hover {
-        -webkit-filter: brightness(1);
-        -webkit-filter: contrast(1);
-        }
-      }
-
     }
   }
 
@@ -93,21 +84,6 @@
     vertical-align: top;
   }
 
-  a {
-    background: transparent;
-    color: $brand-light-3;
-    display: inline-block;
-    padding: 0px 15px;
-    vertical-align: middle;
-    text-decoration: none;
-    transition: 0.2s;
-
-    &:hover {
-      color: white;
-      background: $brand-3;
-      transition: 0.2s;
-    }
-  }
 }
 
 .count-badge {
@@ -125,4 +101,35 @@
   border-radius: 50em;
   padding: 5px;
   margin-left: 4px;
+}
+
+.dropdown {
+  background: $gradient-1;
+  display: none;
+  position: absolute;
+  top: 35px;
+  box-shadow: 0px 2px 2px rgba(0,0,0, 0.3);
+  min-width: 100px;
+  @include small {
+    visibility: hidden;
+    box-shadow: none;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      display: block;
+      padding: 5px 15px;
+    }
+  }
 }

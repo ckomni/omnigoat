@@ -8,6 +8,7 @@
   <%= csrf_meta_tags %>
   <%= content_for :head %>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
 
 </head>
@@ -22,8 +23,8 @@
 <% end %>
 
 <%= yield %>
-<div class="footer">&#169; 2015 Kyle Halvorson</div>
 </div>
+<div class="footer">&#169; 2015 Kyle Halvorson</div>
 
 <% if authorized? then %>
   <% content_for :actions do %>

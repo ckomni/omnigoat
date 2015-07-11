@@ -1,20 +1,29 @@
-<% content_for :navigation do %>
+<% content_for :categories do %>
   <% Category.all.order(:name).each do |c| %>
-    <%= link_to posts_path(c.name), class:"btn category" do %>
-      <span><%= c.name %></span><span class="count-badge"><%= c.posts.count %></span>
+    <%= link_to posts_path(c.name), class:"btn" do %>
+      <li><span><%= c.name %></span><span class="count-badge"><%= c.posts.count %></span></li>
     <% end %>
   <% end %>
 <% end %>
 <nav class="navbar">
   <div class="navlinks">
-    <div class="permanent">
-      <%= link_to "", all_path, class: "brand btn" %>
-      <%= link_to 'about', about_path, class:"btn" %>
-      <%= link_to 'contact', contact_path, class:"btn" %>
+    <div class="nav-section">
+      <%= link_to "", root_path, class: "brand btn", data: {dropdown: "permanent"} %>
+      <div class="dropdown" id="permanent">
+        <ul>
+          <%= link_to all_path, class:"btn" do %><li>home</li><% end %>
+          <%= link_to about_path, class:"btn" do %><li>about</li><% end %>
+          <%= link_to contact_path, class:"btn" do %><li>contact</li><% end %>
+        </ul>
+      </div>
     </div>
-    <div class="categories">
-      <%= link_to 'portfolio', categories_path, class:"btn" %>
-      <%= content_for :navigation %>
+    <div class="nav-section">
+      <%= link_to 'portfolio', categories_path, class:"btn", data: {dropdown: "portfolio"} %>
+      <div class="dropdown" id="portfolio">
+        <ul>
+          <%= content_for :categories %>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

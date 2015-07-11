@@ -56,6 +56,8 @@ blockquote {
 }
 
 .content {
+  box-sizing: border-box;
+  min-height: calc(100vh - 53px);
   margin: auto;
   padding-top: 35px;
   @include small {padding-top: 0px}; // remove the padding that accomodates the scrollbar
@@ -123,6 +125,7 @@ blockquote {
   border-bottom: $brand-light-3 1px solid;
   transition: 0.5s;
   width: 1024px;
+  background: $brand-light-2;
   @include small {
     width: 100%;
     margin-top: 0px;
@@ -143,6 +146,7 @@ blockquote {
   text-align: center;
   color: #999;
   margin: 5px;
+  @include no-select;
 }
 
 .notification {
