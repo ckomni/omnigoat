@@ -5,14 +5,17 @@
   <div class="window">
     <% if @images.any? then %>
 
-      <div class="panel-container">
-      <% @images.each do |i| %><div class="image-link panel", id="image-<%= i.id %>" data-image="<%= i.pic.url %>">
-        <%= link_to '', image_path(i), method: "delete", class:"corner-button" %>
+      <div class="panel-collection" fade-children>
+      <% @images.each do |i| %>
+        <div class="panel-container">
+          <div class="image-link panel", id="image-<%= i.id %>" data-image="<%= i.pic.url %>">
           <div class="image-nav">
             <%= link_to 'Direct Link', asset_path(i.pic.url), class:"panel-button" %>
             <%= link_to 'Post', post_path(i.post.category.name, i.post), class:"panel-button" %>
-          </div></div><% end %>
-        </div>
+          </div></div>
+          <%= link_to '', image_path(i), method: "delete", class:"corner-button" %>
+        </div><% end %>
+      </div>
 
     <% else %>
       <p> There is nothing here! </p>

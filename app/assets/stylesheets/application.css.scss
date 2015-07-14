@@ -18,6 +18,7 @@ body {
 
 p {
   line-height: 1.8em;
+  margin: 15px;
 }
 
 a {
@@ -41,10 +42,8 @@ h1, h2, h3, h4, h5 {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 5px;
-}
-
-h2 {
-  margin-bottom: 10px;
+  margin-top: 1em;
+  @include small {letter-spacing: 2px;}
 }
 
 blockquote {
@@ -57,28 +56,9 @@ blockquote {
 
 .content {
   box-sizing: border-box;
-  min-height: calc(100vh - 53px);
   margin: auto;
   padding-top: 35px;
   @include small {padding-top: 0px}; // remove the padding that accomodates the scrollbar
-}
-
-.background {
-  background: $gradient-3;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: -1100;
-}
-
-.scanlines{
-  display: block;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: image-url('bg.png');
-  opacity: 0.2;
-  z-index: -1000;
 }
 
 .bottom-fixed {
@@ -96,29 +76,11 @@ blockquote {
 	margin: 0;
 	z-index: 15;
   transition: 0.5s;
-}
-
-#actions {
-  @extend .bottom-fixed;
-  display: block;
-  right: 0;
-  margin: auto;
-
-  .actions-category {
-    display: inline-block;
-    padding: 10px;
-    @include shading;
-    @include lightbox;
-  }
-
-  .actions-header {
-    text-align: center;
-    text-transform: uppercase;
-    padding: 5px;
-  }
+  @include small {display: none};
 }
 
 .window {
+  box-sizing: border-box;
   margin: 15px auto;
   margin-bottom: 30px;
   padding-bottom: 45px;
@@ -130,41 +92,42 @@ blockquote {
     width: 100%;
     margin-top: 0px;
     padding-bottom: 30px;
+    margin-bottom: 0px;
     border-bottom: solid $brand-light-3 1px;
     };
   @include medium {max-width: 720px};
   @include large {max-width: 1024px};
-
-  h1,h2,h3,h4{
-    padding: 10px;
-    margin-bottom: 0;
-  }
 }
 
 .footer {
   font-family: arial;
   text-align: center;
   color: #999;
-  margin: 5px;
+  margin: 15px;
   @include no-select;
 }
 
 .notification {
-  @include lightbox;
-  @include shading;
+  background-color: #0f0f0f;
+  background-image: image-url('bg.png');
+  border-bottom: #333;
+  box-shadow: inset 0px 0px 8px #000;
   font-weight: 700;
   text-align: center;
   padding: 15px;
   display: none;
 
   &.danger {
-    color: #900;
+    color: #f00;
+    text-shadow: 0px 0px 8px #f00;
   }
   &.success {
-    color: #090;
-  }
+    color: #5c5;
+    text-shadow: 0px 0px 8px #5c5;
+    }
   &.notice {
-    color: #009;
+    color: #33d;
+    text-shadow: 0px 0px 8px #33d;
   }
 }
 

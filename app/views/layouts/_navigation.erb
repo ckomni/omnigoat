@@ -7,6 +7,7 @@
 <% end %>
 <nav class="navbar">
   <div class="navlinks">
+
     <div class="nav-section">
       <%= link_to "", root_path, class: "brand btn", data: {dropdown: "permanent"} %>
       <div class="dropdown" id="permanent">
@@ -17,6 +18,7 @@
         </ul>
       </div>
     </div>
+
     <div class="nav-section">
       <%= link_to 'portfolio', categories_path, class:"btn", data: {dropdown: "portfolio"} %>
       <div class="dropdown" id="portfolio">
@@ -25,5 +27,18 @@
         </ul>
       </div>
     </div>
+
+    <% if authorized? then %>
+      <div class="nav-section">
+        <%= link_to 'admin', '#', class:"btn", data: {dropdown: "admin"} %>
+        <div class="dropdown" id="admin">
+          <ul>
+            <%= content_for :actions %>
+            <%= link_to logout_path, method: "delete", class:"btn" do %><li>Log Out</li><% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 </nav>

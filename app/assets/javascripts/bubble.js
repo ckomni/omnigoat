@@ -25,8 +25,7 @@ function rotate(elements, divisions) {
     distance = (Math.min(window.innerWidth, window.innerHeight)/2 * 0.8);
     var angle = (2*Math.PI / quantity) * index + offset;
     i.css({
-      left: "calc(" + (distance * Math.cos(angle) - 50) + "px + 50%)",
-      top: "calc(" + (distance * Math.sin(angle) - 50) + "px + 50%)",
+      'transform': "translate3d(" + (distance * Math.cos(angle) - 50) + "px , " + (distance * Math.sin(angle) - 50) + "px , 0px)",
       'box-shadow': (distance/50 * Math.cos(angle)) + 'px ' + (distance/50 * Math.sin(angle)) + 'px ' + (distance/20) + 'px rgba(0,0,0, ' + (100/distance) + ')'
     });
   });

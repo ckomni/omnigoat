@@ -27,4 +27,11 @@ module SessionsHelper
 	def store_location
 		session[:forwarding_url] = request.url if request.get?
 	end
+
+	#Cheevo Helpers
+	def add_cheevo(name, message)
+		return false if session[:cheevos].include?(name)
+		session[:cheevos] << name
+		flash.now[:success] = "Achievement Unlocked: #{message}"
+	end
 end

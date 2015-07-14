@@ -39,6 +39,9 @@
       @include lightbox;
       @include shading;
     }
+    &.pagination.current {
+      @include darkbox;
+    }
   }
 
   .quicknav {
@@ -48,17 +51,52 @@
 
   .title {
     flex: 8;
+    h1 {
+      margin: 0;
+      display: block;
+      padding: 10px;
+    }
   }
 }
 
-.post-copy {
-  padding: 5px;
+.text-copy {
   margin: 15px;
-  line-height: 1.6em;
+  p {
+    margin: 0px;
+    margin-bottom: 15px;
+  }
+}
+
+.post-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  .post-image {
+    box-sizing: border-box;
+    flex-basis: 150px;
+    align-self: center;
+    height: 150px;
+    padding: 5px;
+    @include small {flex-basis: 100px; height: 100px;}
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50em;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0px 2px 4px rgba(0,0,0, 0.3);
+      overflow: hidden;
+    }
+  }
+
 }
 
 .post-details {
-  padding: 5px;
   margin: 15px;
 }
 

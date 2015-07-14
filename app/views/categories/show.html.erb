@@ -1,22 +1,24 @@
 <%- title "#{@category.name} - omnigoat design" %>
 
-<div class="window lg">
-  <h1> <%= @category.name %> <span class="badge"><%= @posts.count %>/<%= @category.posts.count %></span> </h1>
+<div class="window">
+  <h1> <%= @category.name %> <span class="badge"><%= @page %>/<%= pages(@category.posts, @q) %></span> </h1>
+</div>
+<div class="window">
   <div class="panel-collection" fade-children>
     <% @posts.each_with_index do |p,k| %><%= render 'posts/postlink', p: p, k: k, :info => {:time => p.time_updated} %><% end %>
   </div>
 </div>
 
 <% if pages(@category.posts, @q) > 1 then %>
-  <%= render "posts/pagination", pages: pages(@category.posts, @q), size: 9 %>
+  <div class="window">
+    <%= render "posts/pagination", pages: pages(@category.posts, @q), size: 9 %>
+  </div>
 <% end %>
 
 <% content_for :actions do %>
-  <div class="actions-category">
-    <div class="actions-header">Category Actions</div>
-    <%= link_to 'New post', new_post_path, class:"tag" %>
-    <%= link_to 'Delete', category_path(@category), method: "delete", class:"tag" %>
-  </div>
+
+    <%= link_to new_post_path, class:"btn" do %><li>New Post</li><% end %>
+    <%= link_to category_path(@category), method: "delete", class:"btn" do %><li>Delete Category</li><% end %>
 <% end %>
 
 <% if authorized? then %>

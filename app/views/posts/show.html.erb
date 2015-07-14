@@ -8,11 +8,8 @@
 <% end %>
 
 <% content_for :actions do %>
-  <div class="actions-category">
-    <div class="actions-header">Post Actions</div>
-    <%= link_to "Edit", edit_post_path(@category.name, @post), class:"tag" %>
-    <%= link_to "Delete", post_path(@category.name, @post), method: "delete", class:"tag" %>
-  </div>
+    <%= link_to edit_post_path(@category.name, @post), class:"btn" do %><li>Edit Post</li><% end %>
+    <%= link_to post_path(@category.name, @post), method: "delete", class:"btn" do %><li>Delete Post</li><% end %>
 <% end %>
 
 <div class="post-banner large">
@@ -37,7 +34,16 @@
   </div>
 </div>
 
-<div class="post-copy">
+<% if @post.images.any? or authorized? then %>
+  <div class="post-images">
+    <% @post.images.each do |i| %>
+      <div class="post-image"><%= link_to "", i.pic.url, data: {image: i.pic.url} %></div>
+    <% end %>
+      <div class="post-image"><%= link_to "", images_path %></div>
+  </div>
+<% end %>
+
+<div class="text-copy">
   <%=raw @post.description %>
 </div>
 

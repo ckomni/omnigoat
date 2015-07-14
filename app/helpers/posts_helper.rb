@@ -3,6 +3,7 @@ module PostsHelper
     distance_of_time_in_words(post.updated_at, Time.now)
   end
 
+  # returns the fixed integer number of pages when given the posts and the amount to display per page
   def pages(posts, per_page)
     (posts.count.to_f/per_page.to_f).ceil
   end

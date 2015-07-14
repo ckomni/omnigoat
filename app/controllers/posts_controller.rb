@@ -65,6 +65,7 @@ class PostsController < ApplicationController
       session[:viewed].unshift(@post.id)
     end
     @posts = Post.all.includes(:category, :images).find(Post.freshness(session[:viewed])[1..4])
+    add_cheevo("seenitall", "I've Seen Everything") if session[:viewed].length == Post.all.count 
   end
 
   def destroy

@@ -24,17 +24,7 @@
 
 <%= yield %>
 </div>
-<div class="footer">&#169; 2015 Kyle Halvorson</div>
-
-<% if authorized? then %>
-  <% content_for :actions do %>
-    <div class="actions-category">
-      <div class="actions-header">Session</div>
-        <%= link_to 'Log Out', logout_path, method: "delete", class:"tag" %>
-    </div>
-  <% end %>
-  <div id="actions"><%= content_for :actions %></div>
-<% end %>
+<% if !@splash %><div class="footer">&#169; 2015 Kyle Halvorson</div><% end %>
 
 <% if Rails.env.development? then %>
   <div id="debug"> <%= debug(params) %></div>

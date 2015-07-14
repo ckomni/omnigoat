@@ -2,19 +2,18 @@
 
 // Physical bar that spans the page width. Becomes static at small size
 .navbar {
-  @include shading;
+  border-bottom: 1px solid $brand-dark-3;
   background: $gradient-1;
   position: fixed;
-  box-sizing: border-box;
   color: white;
-  z-index: 1000;
+  z-index: 9000;
   height: 35px;
   width: 100%;
   line-height: 35px;
+  @include shading;
   @include no-select;
   @include small {
     position: static;
-    height: auto;
   };
 
   // Container for the links on the navbar. Responds to window width.
@@ -29,7 +28,7 @@
   }
 
   // subset of links with dropdowns
-  .nav-section {}
+  .nav-section {display: inline-block}
 
   .btn {
     box-sizing: border-box;
@@ -110,10 +109,7 @@
   top: 35px;
   box-shadow: 0px 2px 2px rgba(0,0,0, 0.3);
   min-width: 100px;
-  @include small {
-    visibility: hidden;
-    box-shadow: none;
-  }
+  @include small {}
 
   .btn {
     display: block;
@@ -129,7 +125,6 @@
 
     li {
       display: block;
-      padding: 5px 15px;
     }
   }
 }

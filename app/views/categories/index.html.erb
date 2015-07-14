@@ -1,6 +1,7 @@
-<div class="window lg">
+<div class="window">
   <h1>Categories</h1>
-
+</div>
+<div class="window">
   <div class="panel-collection" fade-children>
 <% @categories.each do |c| %>
   <div class="panel-container">
@@ -10,9 +11,6 @@
         <%= c.name %>
       </div>
       <div class="category-posts">
-        <div class="minipost-group">
-          <% c.posts.count.times do %><span class="minipost-square"></span><% end %>
-        </div>
         <div><%= pluralize(c.posts.count, "post") %></div>
       </div>
     </div>
@@ -25,7 +23,7 @@
 </div>
 
 
-<div class="window lg">
+<div class="window">
   <div class="panel-collection" fade-children>
     <% @posts.each_with_index do |p,k| %><%=
       render 'posts/postlink', p: p, k: k, :info => {:category => p.category.name.humanize, :time => p.time_updated}
@@ -33,7 +31,7 @@
   </div>
 </div>
 
-<div class="window lg">
+<div class="window">
   <% if pages(Post.all, @q) > 1 then %>
     <%= render "posts/pagination", pages: pages(Post.all, @q), size: 7 %>
   <% end %>

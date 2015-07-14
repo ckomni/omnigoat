@@ -3,7 +3,7 @@
 .panel-collection {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-flow: row wrap;
   @include small {
     margin: 0;
@@ -14,25 +14,22 @@
 .panel-container {
   display: inline-block;
   padding: 5px;
-  height: 300px;
+  height: 250px;
   box-sizing: border-box;
   flex-basis: 25%;
 
   @include small {
-    flex: 1 100%;
+    flex-basis: 100%;
     padding: 0;
     margin: auto;
     width: 100%;
     height: 200px;
   }
   @include medium {
-    flex: 1 calc(100%/2);
+    flex-basis: calc(100%/2);
     height: 200px;
   }
-  @include large {
-    flex: 1 calc(100%/3);
-    height: 250px;
-  }
+
 }
 
 .panel {
@@ -63,8 +60,6 @@
   }
   &.tag-link {
     background: black;
-  }
-  &:hover {
   }
 }
 
