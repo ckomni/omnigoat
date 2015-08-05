@@ -1,7 +1,9 @@
 <% content_for :categories do %>
   <% Category.all.order(:name).each do |c| %>
-    <%= link_to posts_path(c.name), class:"btn" do %>
-      <li><span><%= c.name %></span><span class="count-badge"><%= c.posts.count %></span></li>
+    <%= render :partial => 'layouts/droplink', :layout => 'layouts/droplink', :locals => {link: posts_path(c.name)} do %>
+      <span class="dropdown-badge" data-image="<%= c.icon.url %>"></span>
+      <span class="dropdown-badge"><span class="count-badge"><%= c.posts.count %></span></span>
+      <span class="dropdown-label"><%= c.name %></span>
     <% end %>
   <% end %>
 <% end %>
@@ -11,10 +13,10 @@
     <div class="nav-section">
       <%= link_to "", root_path, class: "brand btn", data: {dropdown: "permanent"} %>
       <div class="dropdown" id="permanent">
-        <ul>
-          <%= link_to all_path, class:"btn" do %><li>home</li><% end %>
-          <%= link_to about_path, class:"btn" do %><li>about</li><% end %>
-          <%= link_to contact_path, class:"btn" do %><li>contact</li><% end %>
+        <ul class="dropdown-list">
+          <%= render :partial => 'layouts/droplink', :layout => 'layouts/droplink', :locals => {link: all_path} do %><span class="dropdown-label">home</span><% end %>
+          <%= render :partial => 'layouts/droplink', :layout => 'layouts/droplink', :locals => {link: about_path} do %><span class="dropdown-label">about</span><% end %>
+          <%= render :partial => 'layouts/droplink', :layout => 'layouts/droplink', :locals => {link: contact_path} do %><span class="dropdown-label">contact</span><% end %>
         </ul>
       </div>
     </div>
@@ -22,7 +24,7 @@
     <div class="nav-section">
       <%= link_to 'portfolio', categories_path, class:"btn", data: {dropdown: "portfolio"} %>
       <div class="dropdown" id="portfolio">
-        <ul>
+        <ul class="dropdown-list">
           <%= content_for :categories %>
         </ul>
       </div>
@@ -32,9 +34,14 @@
       <div class="nav-section">
         <%= link_to 'admin', '#', class:"btn", data: {dropdown: "admin"} %>
         <div class="dropdown" id="admin">
-          <ul>
+          <ul class="dropdown-list">
             <%= content_for :actions %>
-            <%= link_to logout_path, method: "delete", class:"btn" do %><li>Log Out</li><% end %>
+            <%= link_to logout_url, class: "dropdown-link", method: "delete" do %>
+              <li class="dropdown-option">
+                <span class="dropdown-label">Log Out</span>
+              </li>
+            <% end %>
+
           </ul>
         </div>
       </div>

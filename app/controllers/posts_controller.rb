@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    # Pargination
+    # Pagination
     params[:page].to_i > 1 ? @page = params[:page].to_i : @page = 1
     case
     when params[:q].to_i > 0
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
       session[:viewed].unshift(@post.id)
     end
     @posts = Post.all.includes(:category, :images).find(Post.freshness(session[:viewed])[1..4])
-    add_cheevo("seenitall", "I've Seen Everything") if session[:viewed].length == Post.all.count 
+    add_cheevo("seenitall", "I've Seen Everything") if session[:viewed].length == Post.all.count
   end
 
   def destroy

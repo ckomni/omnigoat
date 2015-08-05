@@ -39,7 +39,9 @@
     <% @post.images.each do |i| %>
       <div class="post-image"><%= link_to "", i.pic.url, data: {image: i.pic.url} %></div>
     <% end %>
+    <% if authorized? %>
       <div class="post-image"><%= link_to "", images_path %></div>
+    <% end %>
   </div>
 <% end %>
 

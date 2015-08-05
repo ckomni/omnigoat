@@ -1,7 +1,6 @@
-<% info = info||{}
-puts "[L] rendering postlink panel..." %>
+<% info = info||{} %>
 <div class="panel-container">
-  <%= link_to post_url(p.category.name, p), class:"post-link panel", id: "#{p.category}-#{p.id}", "image_count" => p.images.count do %>
+  <%= link_to post_url(p.category.name, p), class:"post-link panel", id: "#{p.category.name}-#{p.id}", "shuffle" => (1 if p.images.count > 1) do %>
   <div class="panel-details">
     <div class="post-title"><%= p.title %></div>
     <% info.each do |k,i| %>

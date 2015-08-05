@@ -6,7 +6,7 @@
   <%= link_to all_path do %><div id="title">omnigoat design</div><% end %>
   <div class="bubble-container">
     <% @images.each do |i| %>
-      <%= link_to "", post_path(i.post.category.name, i.post.id), class: "image-bubble", :data => {:image => i.pic.url} %>
+      <%= link_to "", post_path(i.post.category.name, i.post.id), class: "image-bubble", :data => {:image => i.pic.url, :color => i.post.category.color_hex} %>
     <% end %>
   </div>
   <div id="goat" class="<%= "alternate" if @goat == 0 %>"></div>

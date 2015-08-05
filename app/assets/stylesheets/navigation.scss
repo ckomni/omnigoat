@@ -1,9 +1,8 @@
 @import 'brand';
 
-// Physical bar that spans the page width. Becomes static at small size
-.navbar {
-  border-bottom: 1px solid $brand-dark-3;
-  background: $gradient-1;
+.navbar { // Physical bar that spans the page width. Becomes static at small size
+  //border-bottom: 1px solid $brand-dark-3;
+  background: $brand-dark-1;
   position: fixed;
   color: white;
   z-index: 9000;
@@ -16,8 +15,7 @@
     position: static;
   };
 
-  // Container for the links on the navbar. Responds to window width.
-  .navlinks {
+  .navlinks { // Container for the links on the navbar. Responds to window width.
     display: flex;
     flex-wrap: no-wrap;
     margin: auto;
@@ -27,16 +25,14 @@
     @include large {max-width: 1024px};
   }
 
-  // subset of links with dropdowns
-  .nav-section {display: inline-block}
+  .nav-section { // subset of links with dropdowns
+  }
 
   .btn {
     box-sizing: border-box;
-    display: inline-block;
-    vertical-align: top;
-    height: 35px;
-    border-right: 1px solid rgba(0,0,0, 0.3);
-    border-left: 1px solid rgba(255,255,255, 0.1);
+    display: block;
+    //border-right: 1px solid rgba(0,0,0, 0.3);
+    //border-left: 1px solid rgba(255,255,255, 0.1);
     text-align: center;
     background: transparent;
     color: $brand-light-3;
@@ -45,15 +41,21 @@
     text-decoration: none;
     transition: 0.2s;
 
-    &:hover, &[active] {
-      border-left: 1px solid rgba(0,0,0, 0.3);
-      border-right: 1px solid rgba(255,255,255, 0.1);
+
+    &[active] {
       color: white;
-      background: black;
+      background: $brand-3;
       transition: 0.2s;
+      //border-left: 1px solid rgba(0,0,0, 0.3);
+      //border-right: 1px solid rgba(255,255,255, 0.1);
+    }
+
+    &:hover {
+      background: $brand-2;
     }
 
     &.brand {
+      height: 35px;
       padding: 0px;
       width: 45px;
       background-image: image-url("goat-icon.png");
@@ -86,45 +88,65 @@
 }
 
 .count-badge {
-  display: inline-block;
-  background: black;
-  border-left: 1px solid $brand-dark-3;
-  border-top: 1px solid $brand-dark-3;
-  border-right: 1px solid $brand-3;
-  border-bottom: 1px solid $brand-3;
+  box-sizing: border-box;
+  display: block;
   text-align: center;
   vertical-align: middle;
-  font-size: 10px;
-  line-height: 1em;
-  min-width: 1em ;
-  border-radius: 50em;
-  padding: 5px;
-  margin-left: 4px;
+  width: 100%;
+  height:100%;
 }
 
-.dropdown {
-  background: $gradient-1;
+.dropdown { //div element that houses an entire dropdown list
   display: none;
+  background: $brand-3;
   position: absolute;
   top: 35px;
-  box-shadow: 0px 2px 2px rgba(0,0,0, 0.3);
   min-width: 100px;
+  @include shading;
   @include small {}
 
-  .btn {
-    display: block;
-    width: 100%;
+  .dropdown-link { //the anchor element that wraps around the dropdown option to make it clickable
+    text-decoration: none;
   }
 
-  ul {
+  .dropdown-list { //the list that contains the dropdown options
     display: flex;
     flex-direction: column;
     margin: 0;
     list-style: none;
     padding-left: 0;
 
-    li {
-      display: block;
+    .dropdown-option { //each item in the dropdown menu
+      display: flex;
+      padding: 5px;
+      align-items: stretch;
+      min-width: 150px;
+      vertical-align: middle;
+      text-align: center;
+      color: $brand-light-3;
+      flex-basis: 35px;
+      transition: 0.2s;
+
+      &:hover {
+        background: $brand-2;
+      }
+
+      .dropdown-label {
+        flex: 1;
+        box-sizing: border-box;
+        padding: 0px 15px;
+        text-align: center;
+      }
+
+      .dropdown-badge {
+        background-size: contain;
+        background-position: center;
+        flex-basis: 35px;
+        box-sizing: border-box;
+        padding: 0px;
+        width: 35px;
+      }
+
     }
   }
 }
