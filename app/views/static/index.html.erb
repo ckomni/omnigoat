@@ -1,13 +1,15 @@
-<div class="background">
-  <div class="scanlines"></div>
-</div>
-
+<%= link_to all_path, id:"title" do %><%= image_tag "title.svg" %><% end %>
 <div class="splash">
-  <%= link_to all_path do %><div id="title">omnigoat design</div><% end %>
   <div class="bubble-container">
     <% @images.each do |i| %>
       <%= link_to "", post_path(i.post.category.name, i.post.id), class: "image-bubble", :data => {:image => i.pic.url, :color => i.post.category.color_hex} %>
     <% end %>
   </div>
-  <div id="goat" class="<%= "alternate" if @goat == 0 %>"></div>
+  <% if @style == 0 then %>
+    <%= image_tag "goat-sprite.png", id:"goat" %>
+  <% else %>
+    <%= image_tag "goat.png", id:"goat" %>
+  <% end %>
+<div class="scanlines"></div>
 </div>
+<div class="background"></div>

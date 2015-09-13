@@ -15,7 +15,6 @@ var panelShuffler = {
       })
     })
   },
-
   initiate: function(){
     allPanels = $(".panel[shuffle]")
     options = allPanels.length
@@ -23,7 +22,6 @@ var panelShuffler = {
     panelShuffler.shuffle(thisPanel);
     setTimeout(panelShuffler.initiate, panelShuffler.config.minWait + Math.random()*(panelShuffler.config.maxWait - panelShuffler.config.minWait))
   },
-
   shuffle: function(panel){ // function that shuffles the background images in a panel
     $(".panel-background", panel).each(function(index){
       var i = $(this);
@@ -46,12 +44,10 @@ var panelShuffler = {
       }
     })
   },
-
   arrange: function(elements) {
 
   }
 }
-
 var useAttribute = { //
   color: function(elements) {
     elements.each(function(){

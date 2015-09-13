@@ -1,4 +1,4 @@
-<%- title "#{@post.title} - Omnigoat Design" %>
+<%- title "#{@post.title} - OmniGoat Design" %>
 
 <% content_for :head do %>
   <meta property="og:title"  content="<%= @post.title %>" />
@@ -12,28 +12,34 @@
     <%= link_to post_path(@category.name, @post), method: "delete", class:"btn" do %><li>Delete Post</li><% end %>
 <% end %>
 
-<div class="post-banner large">
 <% if @post.images.any? then %>
+<div class="post-banner large">
     <% image = @post.random_picture %>
-      <div class="image" id="image-<%= image.id %>" neighbors="0" image_no="0" data-image="<%= image.pic.url %>"></div>
-<% else %>
-    <div class="panel-background icon" id="category" data-image="<%= @post.category.icon.url %>"></div>
-<% end %>
+    <div class="image" id="image-<%= image.id %>" neighbors="0" image_no="0" data-image="<%= image.pic.url %>"></div>
 </div>
+<% else %>
+<div class="post-banner large blank">
+    <div class="panel-background icon" id="category" data-image="<%= @post.category.icon.url %>"></div>
+</div>
+<% end %>
 
-<div class="window">
+<div class="banner-spacer"></div>
+
+<div class="window blank">
 <div class="postnav">
   <div class="quicknav">
     <% if @post.previous(@category.posts.order(created_at: :desc)) then %>
       <%= link_to "", post_path(@category.name, @post.previous(@category.posts.order(created_at: :desc))), class:"left"%>
     <% end %>
-  </div><div class="title"><h1><%= @post.title %></h1></div><div class="quicknav">
+  </div><h1 class="title"><%= @post.title %></h1><div class="quicknav">
     <% if @post.next(@category.posts.order(created_at: :asc)) then %>
       <%= link_to "", post_path(@category.name, @post.next(@category.posts.order(created_at: :asc))), class:"right" %>
     <% end %>
   </div>
 </div>
+</div>
 
+<div class="window">
 <% if @post.images.any? or authorized? then %>
   <div class="post-images">
     <% @post.images.each do |i| %>

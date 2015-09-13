@@ -10,7 +10,7 @@
 </div>
 
 <% if pages(@category.posts, @q) > 1 then %>
-  <div class="window">
+  <div class="window blank">
     <%= render "posts/pagination", pages: pages(@category.posts, @q), size: 9 %>
   </div>
 <% end %>

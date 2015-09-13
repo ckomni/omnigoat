@@ -29,11 +29,12 @@
   </div>
 </div>
 
-<div class="window">
-  <% if pages(Post.all, @q) > 1 then %>
+
+<% if pages(Post.all, @q) > 1 then %>
+  <div class="window blank">
     <%= render "posts/pagination", pages: pages(Post.all, @q), size: 7 %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 <% if authorized? then %>
   <div class="window form">

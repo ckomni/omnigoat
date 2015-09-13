@@ -11,14 +11,21 @@ html {
 }
 
 body {
-  background-color: #eee;
+  background: #f0f0f0;
   margin: 0;
   font-family: $font-stack;
+  line-height: 2em;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+::selection {
+  background: $brand-1;
+  color: white;
 }
 
 p {
-  line-height: 1.8em;
-  margin: 15px;
+
 }
 
 a {
@@ -29,15 +36,16 @@ a {
 }
 
 h1, h2, h3, h4, h5 {
-  display: block;
-  margin: auto;
-  font-weight: 300;
-  text-shadow: 0 1px 1px rgba(0,0,0, 0.1);
-  text-align: center;
   text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
   letter-spacing: 5px;
-  margin-top: 1em;
-  @include small {letter-spacing: 2px;}
+  text-shadow: 0 1px 1px rgba(0,0,0, 0.1);
+  color: $brand-2;
+  @include small {
+    letter-spacing: 0px;
+    text-transform: none;
+  }
 }
 
 blockquote {
@@ -46,12 +54,18 @@ blockquote {
   margin-left: 15px;
   font-style: italic;
   color: #999;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 0px 15px 15px 0px;
+  @include shading;
 }
 
 .content {
   box-sizing: border-box;
   margin: auto;
   padding-top: 35px;
+  perspective: 100vw;
+  perspective-origin: top;
   @include small {padding-top: 0px}; // remove the padding that accomodates the scrollbar
 }
 
@@ -61,68 +75,58 @@ blockquote {
   @include small {position: static};
 }
 
-#debug {
-  @extend .bottom-fixed;
-  @include shading;
-  @include lightbox;
-  padding: 15px;
-	left: 0;
-	margin: 0;
-	z-index: 15;
-  transition: 0.5s;
-  @include small {display: none};
-}
-
 .window {
+  @include shading;
+  background: $brand-light-2;
   box-sizing: border-box;
-  margin: 15px auto;
-  margin-bottom: 30px;
-  padding-bottom: 45px;
+  width: 1024px;
+  margin: 0px auto;
   border-bottom: $brand-light-3 1px solid;
   transition: 0.5s;
-  width: 1024px;
-  background: $brand-light-2;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &:first-child {
+    margin-top: 50px;
+  }
+
+  &.blank {
+    background: transparent;
+    border-bottom: transparent;
+    box-shadow: none;
+  }
+
   @include small {
     width: 100%;
     margin-top: 0px;
-    padding-bottom: 30px;
-    margin-bottom: 0px;
     border-bottom: solid $brand-light-3 1px;
+    &:first-child {
+      margin-top: 0px;
+    }
     };
   @include medium {max-width: 720px};
   @include large {max-width: 1024px};
+
+  &:not(.ignore-window-edge) > *:not(.ignore-window-edge) {
+    margin-left: 1em;
+    margin-right: 1em;
+    &:first-child {
+      margin-top: 1em;
+    }
+    &:last-child {
+      margin-bottom: 1em;
+    }
+  }
 }
 
 .footer {
+  font-size: 14px;
+  line-height: 1em;
   font-family: arial;
   text-align: center;
   color: #999;
-  margin: 15px;
+  margin: 1em;
   @include no-select;
-}
-
-.notification {
-  background-color: #0f0f0f;
-  background-image: image-url('bg.png');
-  border-bottom: #333;
-  box-shadow: inset 0px 0px 8px #000;
-  font-weight: 700;
-  text-align: center;
-  padding: 15px;
-  display: none;
-
-  &.danger {
-    color: #f00;
-    text-shadow: 0px 0px 8px #f00;
-  }
-  &.success {
-    color: #5c5;
-    text-shadow: 0px 0px 8px #5c5;
-    }
-  &.notice {
-    color: #33d;
-    text-shadow: 0px 0px 8px #33d;
-  }
 }
 
 .badge {
@@ -151,10 +155,47 @@ blockquote {
 
 }
 
-.contact-link {
-  display: block;
+.backend {
+  color: $brand-light-3;
+  text-shadow: 0px 0px 8px $brand-light-3;
+  background-color: #0f0f0f;
+  background-image: image-url('bg.png');
+  box-shadow: inset 0px 0px 8px #000;
+
+  &.danger {
+    color: #f00;
+    text-shadow: 0px 0px 8px #f00;
+  }
+  &.success {
+    color: #5c5;
+    text-shadow: 0px 0px 8px #5c5;
+    }
+  &.notice {
+    color: #99d;
+    text-shadow: 0px 0px 8px #99d;
+  }
+}
+
+.notification {
+  @extend .backend;
+  border-bottom: #333;
+  font-weight: 700;
   text-align: center;
-  font-size: 1.5em;
-  font-weight: 500;
-  text-decoration: none;
+  padding: 15px;
+  display: none;
+}
+
+#debug {
+  @include no-select;
+  @extend .bottom-fixed;
+  @extend .backend;
+  border: 2px inset #333;
+  font-size: 14px;
+  line-height: 1em;
+  padding: 15px;
+	left: 0;
+	margin: 0;
+	z-index: 15;
+  transition: 0.5s;
+  @include small {position: static};
 }

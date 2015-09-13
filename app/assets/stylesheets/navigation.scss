@@ -26,6 +26,7 @@
   }
 
   .nav-section { // subset of links with dropdowns
+    display: inline-block;
   }
 
   .btn {
@@ -41,7 +42,6 @@
     text-decoration: none;
     transition: 0.2s;
 
-
     &[active] {
       color: white;
       background: $brand-3;
@@ -51,7 +51,7 @@
     }
 
     &:hover {
-      background: $brand-2;
+      background: $brand-3;
     }
 
     &.brand {
@@ -103,7 +103,11 @@
   top: 35px;
   min-width: 100px;
   @include shading;
-  @include small {}
+  @include small {
+    width: 100%;
+    left: 0px;
+    z-index: 9000;
+  }
 
   .dropdown-link { //the anchor element that wraps around the dropdown option to make it clickable
     text-decoration: none;
@@ -124,27 +128,41 @@
       vertical-align: middle;
       text-align: center;
       color: $brand-light-3;
-      flex-basis: 35px;
       transition: 0.2s;
+
+      @include small {
+        align-items: center;
+        justify-content: center;
+      }
 
       &:hover {
         background: $brand-2;
       }
 
       .dropdown-label {
+        display:inline-block;
         flex: 1;
+        min-width: 100px;
         box-sizing: border-box;
         padding: 0px 15px;
         text-align: center;
+
+        @include small {
+          flex: 0;
+        }
       }
 
       .dropdown-badge {
+        display:inline-block;
+
         background-size: contain;
         background-position: center;
+        background-repeat:no-repeat;
         flex-basis: 35px;
+        width: 35px;
         box-sizing: border-box;
         padding: 0px;
-        width: 35px;
+        @include small {height: 35px;}
       }
 
     }

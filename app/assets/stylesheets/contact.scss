@@ -1,0 +1,78 @@
+@import 'brand';
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include small {
+
+  }
+}
+
+.contact-panel {
+  box-sizing: border-box;
+  padding: 15px;
+  flex-basis: 50%;
+
+
+  @include medium {
+    flex-basis: 100%;
+  }
+
+  @include small {
+    flex-basis: 100%;
+    padding: 15px;
+  }
+}
+
+.contact-link {
+  display: flex;
+  box-sizing: border-box;
+  @include invis-link;
+  margin: 0px;
+  text-decoration: none;
+  transition: box-shadow 0.2s, background 0.2s;
+  background: $brand-3;
+  color: $brand-light-1;
+  min-height: 150px;
+  @include shading;
+  @include small {
+    min-height: 100px;
+  }
+
+  &:hover {
+    color: $brand-light-1;
+  }
+
+}
+
+.contact-icon {
+  display: block;
+  box-sizing: border-box;
+  //background: url("category.png");
+  background-size: contain;
+  flex-basis: 150px;
+  padding: 10px;
+
+  @include small {
+    flex-basis: 100px;
+  }
+}
+
+.contact-details {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+}
+
+.contact-label {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.contact-value {
+  font-size: 1em;
+  font-weight: 300;
+}

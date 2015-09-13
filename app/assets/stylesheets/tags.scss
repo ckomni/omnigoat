@@ -1,19 +1,20 @@
 @import 'brand';
 
 .tag-container {
-  margin: auto;
-  margin: 15px;
+  margin: 1em;
 }
 
 .tag {
-  @include lightbox;
+  @include darkbox;
   @include shading;
-  font-size: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1em;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-decoration: none;
   display: inline-block;
-  padding: 5px 15px;
+  padding: 10px 15px;
   margin: 2px;
   transition: 0.1s ease-in;
   @include small {
