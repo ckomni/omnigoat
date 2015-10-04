@@ -53,14 +53,13 @@
 
   @include invis-link;
   @include small {
-    border: 1px solid transparent;
   }
 
   &.post-link {
     background: $brand-3;
   }
   &.category-link {
-    @include lightbox;
+    @include darkbox;
     text-shadow: none;
   }
   &.tag-link {

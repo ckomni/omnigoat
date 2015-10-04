@@ -9,7 +9,7 @@
   height: 35px;
   width: 100%;
   line-height: 35px;
-  @include shading;
+  @include shading(2px);
   @include no-select;
   @include small {
     position: static;
@@ -20,6 +20,7 @@
     flex-wrap: no-wrap;
     margin: auto;
     width: 1024px;
+    transition: width $time-m, max-width $time-m;
     @include small {width: 100%};
     @include medium {max-width: 720px};
     @include large {max-width: 1024px};
@@ -102,7 +103,7 @@
   position: absolute;
   top: 35px;
   min-width: 100px;
-  @include shading;
+  @include shading(2px);
   @include small {
     width: 100%;
     left: 0px;
@@ -148,7 +149,7 @@
         text-align: center;
 
         @include small {
-          flex: 0;
+          flex: none;
         }
       }
 

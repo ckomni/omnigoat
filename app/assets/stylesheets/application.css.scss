@@ -24,15 +24,10 @@ body {
   color: white;
 }
 
-p {
-
-}
-
 a {
   color: $brand-2;
   &:hover {color: $brand-1;}
   &:active {color: $brand-3;}
-
 }
 
 h1, h2, h3, h4, h5 {
@@ -43,8 +38,11 @@ h1, h2, h3, h4, h5 {
   text-shadow: 0 1px 1px rgba(0,0,0, 0.1);
   color: $brand-2;
   @include small {
+    text-shadow: none;
+    font-size: 1.2em;
+    font-weight: 500;
     letter-spacing: 0px;
-    text-transform: none;
+    //text-transform: none;
   }
 }
 
@@ -57,7 +55,7 @@ blockquote {
   background: #f5f5f5;
   padding: 15px;
   border-radius: 0px 15px 15px 0px;
-  @include shading;
+  @include raise(2px);
 }
 
 .content {
@@ -75,19 +73,44 @@ blockquote {
   @include small {position: static};
 }
 
+// primary organization unit for most content on the website.
+// direct children of windows (the substance of the windows) have their margins strictly controlled by window edge logic
+// windows are responsive to viewport size
 .window {
-  @include shading;
+  @include raise(2px);
+  @include responsive-transitions;
   background: $brand-light-2;
   box-sizing: border-box;
   width: 1024px;
   margin: 0px auto;
   border-bottom: $brand-light-3 1px solid;
-  transition: 0.5s;
   overflow-y: auto;
   overflow-x: hidden;
 
-  &:first-child {
+  &:first-of-type {
     margin-top: 50px;
+  }
+
+  &.spacer {
+    height: 2em;
+    line-height: 2em;
+    background: transparent;
+    box-shadow: none;
+    overflow: hidden;
+    @include small {
+      display: none;
+    }
+
+    & > hr {
+      border-width: 1px;
+      border-style: solid;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-bottom-color: #fff;
+      border-right-color: #fff;
+      margin: 1em !important;
+    }
+
   }
 
   &.blank {
@@ -97,6 +120,7 @@ blockquote {
   }
 
   @include small {
+    @include raise(0px);
     width: 100%;
     margin-top: 0px;
     border-bottom: solid $brand-light-3 1px;
@@ -107,6 +131,7 @@ blockquote {
   @include medium {max-width: 720px};
   @include large {max-width: 1024px};
 
+  // tricky CSS logic to control the margins of content within the window unless expressly forbidden by either the window or the content
   &:not(.ignore-window-edge) > *:not(.ignore-window-edge) {
     margin-left: 1em;
     margin-right: 1em;
@@ -131,7 +156,6 @@ blockquote {
 
 .badge {
   @include lightbox;
-  @include shading;
   padding: 10px;
   height: 0.8em;
   line-height: 0.8em;
@@ -155,40 +179,27 @@ blockquote {
 
 }
 
-.backend {
-  color: $brand-light-3;
-  text-shadow: 0px 0px 8px $brand-light-3;
-  background-color: #0f0f0f;
-  background-image: image-url('bg.png');
-  box-shadow: inset 0px 0px 8px #000;
-
-  &.danger {
-    color: #f00;
-    text-shadow: 0px 0px 8px #f00;
-  }
-  &.success {
-    color: #5c5;
-    text-shadow: 0px 0px 8px #5c5;
-    }
-  &.notice {
-    color: #99d;
-    text-shadow: 0px 0px 8px #99d;
-  }
-}
-
 .notification {
-  @extend .backend;
+  @include backend;
+  position: fixed;
+  width: 100%;
+  top: 35px;
   border-bottom: #333;
   font-weight: 700;
   text-align: center;
   padding: 15px;
   display: none;
+  z-index: 8000;
+  @include small {
+    position: static;
+    top: 0px;
+  }
 }
 
 #debug {
   @include no-select;
+  @include backend;
   @extend .bottom-fixed;
-  @extend .backend;
   border: 2px inset #333;
   font-size: 14px;
   line-height: 1em;

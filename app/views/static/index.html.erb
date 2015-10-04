@@ -1,4 +1,6 @@
-<%= link_to all_path, id:"title" do %><%= image_tag "title.svg" %><% end %>
+<%= link_to all_path, id:"title" do %>
+  <%= inline_svg("title.svg") %>
+<% end %>
 <div class="splash">
   <div class="bubble-container">
     <% @images.each do |i| %>
@@ -13,3 +15,10 @@
 <div class="scanlines"></div>
 </div>
 <div class="background"></div>
+
+<% content_for :javascript do %>
+  title = document.querySelectorAll("#title > svg > *");
+  bubbles = document.querySelectorAll(".image-bubble")
+  sineWave.createInstance(title, {amplitude: 20})
+  bubbleRotate.createInstance(bubbles)
+<% end %>

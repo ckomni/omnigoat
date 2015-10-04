@@ -3,7 +3,9 @@
 <% content_for :head do %>
   <meta property="og:title"  content="<%= @post.title %>" />
   <meta property="og:site_name"  content= "Omnigoat Design" />
-  <meta property="og:image"  content="<%= @post.random_picture_url %>" />
+  <% if @post.images.any? %>
+    <meta property="og:image"  content="<%= @post.images.first.pic.url %>" />
+  <% end %>
   <meta property="og:type"   content="<%= @category.name %>" />
 <% end %>
 
@@ -12,31 +14,21 @@
     <%= link_to post_path(@category.name, @post), method: "delete", class:"btn" do %><li>Delete Post</li><% end %>
 <% end %>
 
-<% if @post.images.any? then %>
-<div class="post-banner large">
-    <% image = @post.random_picture %>
-    <div class="image" id="image-<%= image.id %>" neighbors="0" image_no="0" data-image="<%= image.pic.url %>"></div>
-</div>
-<% else %>
-<div class="post-banner large blank">
-    <div class="panel-background icon" id="category" data-image="<%= @post.category.icon.url %>"></div>
-</div>
-<% end %>
+<div class="banner-spacer">
+  <% if @post.images.any? then %>
+    <div class="post-background">
+        <% image = @post.random_picture %>
+        <div class="image" id="image-<%= image.id %>" neighbors="0" image_no="0" data-image="<%= image.pic.url %>"></div>
+    </div>
+  <% else %>
+    <div class="post-background blank">
+        <div class="panel-background icon" id="category" data-image="<%= @post.category.icon.url %>"></div>
+    </div>
+  <% end %>
 
-<div class="banner-spacer"></div>
-
-<div class="window blank">
-<div class="postnav">
-  <div class="quicknav">
-    <% if @post.previous(@category.posts.order(created_at: :desc)) then %>
-      <%= link_to "", post_path(@category.name, @post.previous(@category.posts.order(created_at: :desc))), class:"left"%>
-    <% end %>
-  </div><h1 class="title"><%= @post.title %></h1><div class="quicknav">
-    <% if @post.next(@category.posts.order(created_at: :asc)) then %>
-      <%= link_to "", post_path(@category.name, @post.next(@category.posts.order(created_at: :asc))), class:"right" %>
-    <% end %>
+  <div class="window blank">
+    <div class="title"><%= @post.title %></div>
   </div>
-</div>
 </div>
 
 <div class="window">
@@ -71,6 +63,7 @@
 </div>
 
 <% if @posts then %>
+  <div class="window spacer"></div>
   <div class="window" id="related">
     <h2>More posts</h2>
     <div class="panel-collection">

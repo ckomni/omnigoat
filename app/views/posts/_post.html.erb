@@ -1,13 +1,17 @@
-  <% if @post.images.any? then %>
-    <div class="post-banner">
-      <% if @post.images.any? then %>
-        <% image = @post.random_picture %>
-        <%= link_to post_url(@post.category.name, @post) do %>
-          <div class="image" id="image-<%= image.id %>" data-image="<%= image.pic.url %>"></div>
-        <% end %>
+<% if @post.images.any? then %>
+  <div class="post-banner">
+    <% if @post.images.any? then %>
+      <% image = @post.random_picture %>
+      <%= link_to post_url(@post.category.name, @post) do %>
+        <div class="image" id="image-<%= image.id %>" data-image="<%= image.pic.url %>"></div>
       <% end %>
+    <% end %>
     </div>
-  <% end %>
+<% else %>
+  <h1> <%= @post.title %> </h1>
+<% end %>
+
+
 
   <div class="text-copy">
     <%=raw @post.description %>
@@ -15,10 +19,10 @@
 
   <div class="post-details">
     <div class="post-detail">Updated: <%= @post.time_updated %></div>
+    <div class="tag-container">
+      <%= link_to @post.category.name, posts_path(@post.category.name), class:"tag", :data => {color: @post.category.color_hex} %>
+      <% @post.tags.each do |t| %>
+        <%= link_to t.name, tag_path(t.name), class:"tag" %>
+      <% end %>
+    </div>
   </div>
-
-<div class="tag-container">
-  <% @post.tags.each do |t| %>
-    <%= link_to t.name, tag_path(t.name), class:"tag" %>
-  <% end %>
-</div>

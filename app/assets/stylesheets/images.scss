@@ -3,7 +3,6 @@
 .corner-button {
   @include invis-link;
   @include lightbox;
-  @include shading;
   font-weight: 700;
   font-size: 2em;
   line-height: 40px;
@@ -24,7 +23,6 @@
 .panel-button {
   @include invis-link;
   @include lightbox;
-  @include shading;
   display: inline-block;
   padding: 5px;
 }

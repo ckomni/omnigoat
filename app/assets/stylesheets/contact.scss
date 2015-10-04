@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   justify-content: center;
   @include small {
-
+    @include ignore-window-edge;
   }
 }
 
@@ -26,22 +26,24 @@
 }
 
 .contact-link {
+  @include invis-link;
   display: flex;
   box-sizing: border-box;
-  @include invis-link;
   margin: 0px;
   text-decoration: none;
-  transition: box-shadow 0.2s, background 0.2s;
   background: $brand-3;
-  color: $brand-light-1;
+  color: $brand-light-3;
+  transition: box-shadow $time-f, background $time-f, color $time-f;
   min-height: 150px;
-  @include shading;
+  @include raise(2px);
   @include small {
     min-height: 100px;
   }
 
   &:hover {
     color: $brand-light-1;
+    background: $brand-2;
+    @include raise(4px);
   }
 
 }
@@ -50,26 +52,33 @@
   display: block;
   box-sizing: border-box;
   //background: url("category.png");
-  background-size: contain;
-  flex-basis: 150px;
-  padding: 10px;
+  //background-size: contain;
+  flex-basis: auto;
+  padding: 15px;
 
   @include small {
-    flex-basis: 100px;
+    display: none;
   }
 }
 
 .contact-details {
+  line-height: 1.5em;
   text-align: center;
   flex: 1;
   display: flex;
   flex-direction:column;
   justify-content: center;
+  @include small {
+    font-size: 5vw;
+  }
 }
 
 .contact-label {
   font-size: 1.5em;
   font-weight: 500;
+  @include small {
+    display: none;
+  }
 }
 
 .contact-value {

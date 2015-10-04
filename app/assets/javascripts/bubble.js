@@ -30,15 +30,14 @@ var splashBubble = {
 
   init: function () {
     splashBubble.bubbles = $(".image-bubble");
+    setInterval(function() {
+      if(!splashBubble.paused) { // only run function if nothing is pausing the animation
+        splashBubble.rotate(splashBubble.bubbles, 1000 / splashBubble.bubbles.length)
+      }
+    }, (1000 / splashBubble.config.refresh) );
   }
 }
 
 $(document).ready(function(){
-  splashBubble.init();
-  setInterval(function() {
-    if(!splashBubble.paused) { // only run function if nothing is pausing the animation
-      splashBubble.rotate(splashBubble.bubbles, 1000 / splashBubble.bubbles.length)
-    }
-  }, (1000 / splashBubble.config.refresh) );
-
+  //splashBubble.init();
 })

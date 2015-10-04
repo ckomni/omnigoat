@@ -16,19 +16,24 @@
 
 <%= render 'layouts/navigation' %>
 
-<div class="content">
-
 <% flash.each do |message_type, message| %>
   <div class="notification <%= message_type %>"><%= message %></div>
 <% end %>
 
-<%= yield %>
+<div class="content">
+  <%= yield %>
 </div>
+
 <% if !@splash %><div class="footer">&#169; 2015 Kyle Halvorson</div><% end %>
 
 <% if Rails.env.development? then %>
   <div id="debug"> <%= debug(params) %></div>
 <% end %>
 
+<script>
+    $(document).ready(function(){
+        <%= yield(:javascript) %>
+    });
+</script>
 </body>
 </html>

@@ -31,7 +31,9 @@ gem 'paperclip', '~> 4.2'
 # foreign key helpers
 gem 'foreigner'
 
+# fun, experimental gems
 gem 'twitter'
+gem 'inline_svg'
 
 group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -42,7 +44,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 
 group :production do
   gem 'puma'

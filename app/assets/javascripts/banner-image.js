@@ -28,9 +28,9 @@ var panImage = {
 }
 
 $(document).ready(function(){
-  var bannerImages = $(".post-banner.large .image");
-  panImage.resize(bannerImages);
-  $(window).resize(function(){panImage.resize(bannerImages)});
+  var bannerImages = $(".post-background .image");
+  //panImage.resize(bannerImages);
+  //$(window).resize(function(){panImage.resize(bannerImages)});
   // $(document).mousemove(function(event){
   //     panImage.mousetrack(bannerImages, event);
   // })

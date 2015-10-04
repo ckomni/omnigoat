@@ -20,7 +20,7 @@ class Post < ActiveRecord::Base
     puts "[T] looking for random picture..."
     self.tags.map(&:name).join(", ")
   end
-
+  
   def random_picture
     puts "[I] looking for random picture..."
     return nil unless self.images.any?
