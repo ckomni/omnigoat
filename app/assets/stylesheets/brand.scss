@@ -14,17 +14,17 @@ $background-dark: rgba(0,0,0, 0.75);
 
 $brand-1: #911;
 $brand-2: #711;
-$brand-3: #500;
+$brand-3: #511;
 
 $brand-light-1: #fff;
 $brand-light-2: #fafafa;
 $brand-light-3: #f0f0f0;
 
-$brand-dark-1: #300;
-$brand-dark-2: #200;
-$brand-dark-3: #100;
+$brand-dark-1: #333;
+$brand-dark-2: #222;
+$brand-dark-3: #111;
 
-$gradient-1: linear-gradient(to bottom, $brand-3 0%, $brand-dark-1 100%);
+$gradient-1: linear-gradient(to bottom, $brand-dark-3 0%, $brand-dark-1 10%, $brand-dark-2 50%, $brand-dark-3 100%);
 $gradient-2: linear-gradient(to bottom, $brand-light-2 0%, $brand-light-3 100%);
 $gradient-3: radial-gradient(ellipse at center, $brand-1 0%, $brand-3 100%);
 

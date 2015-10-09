@@ -14,3 +14,7 @@
     <%= render "posts/pagination", pages: pages(Post.all, @q), size: 7 %>
 </div>
 <% end %>
+
+<% content_for :javascript do %>
+  catBadges = document.querySelectorAll(".post-banner-badge")
+<% end %>

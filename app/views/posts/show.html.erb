@@ -1,4 +1,5 @@
 <%- title "#{@post.title} - OmniGoat Design" %>
+<% color = @category.color_hex %>
 
 <% content_for :head do %>
   <meta property="og:title"  content="<%= @post.title %>" />
@@ -18,11 +19,11 @@
   <% if @post.images.any? then %>
     <div class="post-background">
         <% image = @post.random_picture %>
-        <div class="image" id="image-<%= image.id %>" neighbors="0" image_no="0" data-image="<%= image.pic.url %>"></div>
+        <div class="image" id="image-<%= image.id %>" neighbors="0" image_no="0" data-image="<%= image.pic.url %>" data-color="<%= color %>"></div>
     </div>
   <% else %>
     <div class="post-background blank">
-        <div class="panel-background icon" id="category" data-image="<%= @post.category.icon.url %>"></div>
+        <div class="panel-background icon" id="category" data-image="<%= @post.category.icon.url %>" data-color="<% color %>"></div>
     </div>
   <% end %>
 
@@ -35,10 +36,14 @@
 <% if @post.images.any? or authorized? then %>
   <div class="post-images">
     <% @post.images.each do |i| %>
-      <div class="post-image"><%= link_to "", i.pic.url, data: {image: i.pic.url} %></div>
+      <div class="post-image"><%= link_to "", i.pic.url, data: {image: i.pic.url, color: color} %></div>
     <% end %>
     <% if authorized? %>
-      <div class="post-image"><%= link_to "", images_path %></div>
+      <div class="post-image">
+        <%= link_to images_path, data: {color: color} do %>
+          Add new image
+        <% end %>
+      </div>
     <% end %>
   </div>
 <% end %>

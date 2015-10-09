@@ -4,9 +4,9 @@
 }
 
 .tag {
-  @include darkbox;
   @include invis-link;
   color: $brand-light-3;
+  background: $brand-dark-1;
   font-size: 10px;
   font-weight: 500;
   line-height: 1em;
@@ -23,5 +23,13 @@
 
   &:hover {
     color: $brand-light-1;
+    background: $brand-2;
+  }
+
+  &.category {
+    display: none;
+    @include small {
+      display: inline-block;
+    }
   }
 }

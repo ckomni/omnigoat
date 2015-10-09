@@ -12,13 +12,14 @@
   <% else %>
     <%= image_tag "goat.png", id:"goat" %>
   <% end %>
-<div class="scanlines"></div>
 </div>
+<div class="scanlines"></div>
 <div class="background"></div>
 
 <% content_for :javascript do %>
   title = document.querySelectorAll("#title > svg > *");
   bubbles = document.querySelectorAll(".image-bubble")
-  sineWave.createInstance(title, {amplitude: 20})
+  sineWave.createInstance(title, {amplitude: 5})
   bubbleRotate.createInstance(bubbles)
+  GroupAnimate(bubbles, "opacity", 1, {interval: 500, time: 1000})
 <% end %>

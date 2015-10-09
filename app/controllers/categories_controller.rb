@@ -83,8 +83,8 @@ class CategoriesController < ApplicationController
     end
 
     def verify_category
-      if !Category.find_by(name: params[:category])
-        flash[:danger] = "Does not exist"
+      category = params[:category]
+      if !Category.find_by(name: category)
         redirect_to all_path
       end
     end

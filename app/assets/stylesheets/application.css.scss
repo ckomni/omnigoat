@@ -124,6 +124,7 @@ blockquote {
     width: 100%;
     margin-top: 0px;
     border-bottom: solid $brand-light-3 1px;
+
     &:first-child {
       margin-top: 0px;
     }
@@ -179,21 +180,27 @@ blockquote {
 
 }
 
-.notification {
-  @include backend;
+.notification-container {
   position: fixed;
-  width: 100%;
   top: 35px;
-  border-bottom: #333;
-  font-weight: 700;
-  text-align: center;
-  padding: 15px;
-  display: none;
+  width: 100%;
   z-index: 8000;
+
   @include small {
     position: static;
     top: 0px;
   }
+
+}
+
+.notification {
+  @include backend;
+  width: 100%;
+  border-bottom: #333;
+  font-weight: 700;
+  text-align: center;
+  padding: 15px;
+  opacity: 0;
 }
 
 #debug {

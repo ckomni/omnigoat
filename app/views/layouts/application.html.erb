@@ -16,9 +16,11 @@
 
 <%= render 'layouts/navigation' %>
 
+<div class="notification-container">
 <% flash.each do |message_type, message| %>
   <div class="notification <%= message_type %>"><%= message %></div>
 <% end %>
+</div>
 
 <div class="content">
   <%= yield %>
@@ -33,7 +35,16 @@
 <script>
     $(document).ready(function(){
         <%= yield(:javascript) %>
+        colorNodes = document.querySelectorAll("[data-color]")
+        useData(colorNodes, "color", "background-color")
+        imageNodes = document.querySelectorAll("[data-image]")
+        useData(imageNodes, "image", "background-image")
+        notifications = document.getElementsByClassName("notification")
+        LoadNotifications(notifications)
+        fadeNodes = document.querySelectorAll("[fade],[fade-children] > *");
+        GroupAnimate(fadeNodes, "opacity", 1, {interval: 100})
     });
 </script>
+
 </body>
 </html>

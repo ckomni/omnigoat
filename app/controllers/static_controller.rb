@@ -17,4 +17,7 @@ class StaticController < ApplicationController
   def contact
   end
 
+  def notfound
+  end
+
 end

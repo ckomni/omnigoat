@@ -32,7 +32,6 @@ Rails.application.routes.draw do
 
   # These dynamic routes should be routed last in case other static routes need to be matched first
   get ':category', to: 'categories#show'
-
   # Posts should be routed after categories so categories can be routed to first. Make sure that Posts Controller handles non-existent category parameter
   resources :posts, :path => ":category/", except: [:index], concerns: :remote
 

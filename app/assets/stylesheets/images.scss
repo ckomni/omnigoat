@@ -2,27 +2,34 @@
 
 .corner-button {
   @include invis-link;
-  @include lightbox;
+  color: white;
+  text-shadow: $shadow-3;
   font-weight: 700;
   font-size: 2em;
   line-height: 40px;
   position: relative;
   display: block;
   text-align: center;
-  vertical-align: middle;
   float: right;
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  right: -5px;
-  top: -105%;
+  top: -100%;
+  transition: 0.2s;
+  &:hover{
+    color:white;
+  };
+  //transform: translate3D(15px, -15px, 0);
 
   &:before { content:"\00d7"; }
 }
 
 .panel-button {
   @include invis-link;
-  @include lightbox;
+  color: white;
+  text-shadow: $shadow-3;
+  font-weight: 500;
+  line-height: 40px;
   display: inline-block;
   padding: 5px;
 }

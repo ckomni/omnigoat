@@ -8,7 +8,7 @@
       <div class="panel-collection" fade-children>
       <% @images.each do |i| %>
         <div class="panel-container">
-          <div class="image-link panel", id="image-<%= i.id %>" data-image="<%= i.pic.url %>">
+          <div class="image-link panel-background", id="image-<%= i.id %>" data-image="<%= i.pic.url %>">
           <div class="image-nav">
             <%= link_to 'Direct Link', asset_path(i.pic.url), class:"panel-button" %>
             <%= link_to 'Post', post_path(i.post.category.name, i.post), class:"panel-button" %>

@@ -66,23 +66,82 @@
 
 
 .post-banner {
-  display: block;
-  justify-content: center;
-  height: 250px;
+  display: flex;
+  height: 400px;
   overflow: hidden;
-  @include ignore-window-edge;
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  .image {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: block;
-    background-color: black;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: inset 0px 0px 32px rgba(0,0,0,0.3);
+  box-shadow: inset 0px 0px 32px rgba(0,0,0,0.3);
+  @include ignore-window-edge;
+  @include invis-link;
+
+  @include small {
+    height: 50vh;
+    background-attachment: fixed;
   }
+}
+
+.post-banner-text {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: $brand-light-1;
+  text-shadow: $shadow-3;
+  padding: 1em;
+  line-height: 1em;
+}
+
+.post-banner-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.25em;
+  text-transform: uppercase;
+
+}
+
+.post-banner-detail {
+  font-size: 0.75em;
+  line-height: 1.2em;
+
+}
+
+.post-banner-badge {
+  // @include ignore-window-edge;
+  @include no-select;
+  @include invis-link;
+  @include raise(2px);
+  @include ignore-window-edge;
+  box-sizing: border-box;
+  color: rgba(255,255,255, 0.3);
+  background: $brand-dark-3;
+  border: solid 1px rgba(255,255,255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.75em;
+  line-height: 1em;
+  position:absolute;
+  display: block;
+  padding: 1em 2em;
+  right: 1em;
+  top: 1em;
+  overflow-x: visible;
+  transition: $time-f;
+
+  @include small {
+    display: none;
+  }
+
+  &:hover {
+    color: $brand-light-1;
+    opacity: 1;
+  }
+
 }
 
 // module on the top of post view that contains the title and forward / backwards arrows.
