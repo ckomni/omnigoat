@@ -6,6 +6,8 @@
   <meta property="og:site_name"  content= "Omnigoat Design" />
   <% if @post.images.any? %>
     <meta property="og:image"  content="<%= @post.images.first.pic.url %>" />
+  <% else %>
+    <meta property="og:image"  content="/assets/goat-og.png" />
   <% end %>
   <meta property="og:type"   content="<%= @category.name %>" />
 <% end %>
@@ -17,13 +19,14 @@
 
 <div class="banner-spacer">
   <% if @post.images.any? then %>
-    <div class="post-background">
+    <div class="post-background" data-color="<%= color %>">
         <% image = @post.random_picture %>
-        <div class="image" id="image-<%= image.id %>" neighbors="0" image_no="0" data-image="<%= image.pic.url %>" data-color="<%= color %>"></div>
+
+        <div class="image" id="image-<%= image.id %>" neighbors="0" image_no="0" data-image="<%= image.pic %>" ></div>
     </div>
   <% else %>
-    <div class="post-background blank">
-        <div class="panel-background icon" id="category" data-image="<%= @post.category.icon.url %>" data-color="<% color %>"></div>
+    <div class="post-background" data-color="<%= color %>">
+        <div class="icon" id="category" data-image="<%= @post.category.icon.url %>"></div>
     </div>
   <% end %>
 
@@ -36,7 +39,7 @@
 <% if @post.images.any? or authorized? then %>
   <div class="post-images">
     <% @post.images.each do |i| %>
-      <div class="post-image"><%= link_to "", i.pic.url, data: {image: i.pic.url, color: color} %></div>
+      <div class="post-image"><%= link_to "", image_path(i), data: {image: i.pic.url, color: color} %></div>
     <% end %>
     <% if authorized? %>
       <div class="post-image">

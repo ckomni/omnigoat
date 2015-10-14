@@ -1,3 +1,5 @@
+<%- title "Categories - OmniGoat Design" %>
+
 <div class="window">
   <h1>Categories</h1>
 </div>
@@ -5,7 +7,7 @@
   <div class="panel-collection" fade-children>
 <% @categories.each do |c| %>
   <div class="panel-container">
-    <%= link_to posts_path(c.name), class:"category-link panel" do %>
+    <%= link_to posts_path(c.name), class:"category-link panel", data: {color: c.color_hex} do %>
     <div class="panel-details">
       <div class="category-name">
         <%= c.name %>
@@ -20,21 +22,6 @@
 <% end %>
   </div>
 </div>
-
-<div class="window">
-  <div class="panel-collection" fade-children>
-    <% @posts.each_with_index do |p,k| %><%=
-      render 'posts/postlink', p: p, k: k, :info => {:category => p.category.name.humanize, :time => p.time_updated}
-      %><% end %>
-  </div>
-</div>
-
-
-<% if pages(Post.all, @q) > 1 then %>
-  <div class="window blank">
-    <%= render "posts/pagination", pages: pages(Post.all, @q), size: 7 %>
-  </div>
-<% end %>
 
 <% if authorized? then %>
   <div class="window form">

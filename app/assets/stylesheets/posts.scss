@@ -36,7 +36,8 @@
   top:0;
   justify-content: center;
   overflow: hidden;
-  height: 100vh;
+  top: 35px;
+  height: calc(100vh - 35px);
   width: 100%;
   background: $brand-light-3;
   z-index: -50;
@@ -48,6 +49,7 @@
 
   @include small {
     height: 40vh;
+    top: 0;
   }
 
   .image {
@@ -55,15 +57,29 @@
     height: 100%;
     position: relative;
     display: block;
-    background-color: black;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: inset 0 -4px 8px rgba(0,0,0,0.3);
   }
+
+  .icon {
+    height: 40vh;
+    opacity: 0.2;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: overlay;
+  }
 }
 
-
+.post-preview {
+  @include small {
+    display: flex;
+    flex-direction: column;
+    height: calc(50% - 0px);
+    height: 50vh;
+  }
+}
 
 .post-banner {
   display: flex;
@@ -79,7 +95,7 @@
   @include invis-link;
 
   @include small {
-    height: 50vh;
+    flex: 1;
     background-attachment: fixed;
   }
 }
@@ -197,14 +213,26 @@
     @include small {flex-basis: 100px; height: 100px;}
 
     a {
+      @include no-select;
+      @include invis-link;
+      @include raise(2px);
+      @include ignore-window-edge;
+      box-sizing: border-box;
+      color: rgba(255,255,255, 0.3);
+      background: $brand-dark-3;
+      border: solid 2px rgba(0,0,0, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.75em;
+      line-height: 1em;
+      text-align: center;
+      padding: 5px;
       display: block;
       width: 100%;
       height: 100%;
-      border-radius: 3px;
       background-size: cover;
       background-position: center;
       overflow: hidden;
-      @include raise(2px);
     }
   }
 

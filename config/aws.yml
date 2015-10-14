@@ -1,0 +1,17 @@
+# gem 'aws-sdk', '<2.0'
+
+default: &default
+  bucket: <%= ENV["S3_BUCKET_NAME"] %>
+  access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
+  secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
+  simple_db_consistent_reads: false
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  simple_db_consistent_reads: true
+
+test:
+  <<: *default

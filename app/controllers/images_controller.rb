@@ -25,6 +25,8 @@ class ImagesController < ApplicationController
 
   def show
     @image = Image.find(params[:id])
+    @post = @image.post
+    render :layout => false
   end
 
   def destroy

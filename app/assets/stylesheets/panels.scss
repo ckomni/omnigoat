@@ -38,7 +38,7 @@
 }
 
 .panel {
-  @include darkbox;
+  // @include darkbox;
   background: transparent;
   line-height: 1em;
   display: block;
@@ -53,14 +53,15 @@
 
   @include invis-link;
   @include small {
+    border-bottom: 1px solid rgba(255,255,255, 0.3);
   }
 
   &.post-link {
     background: $brand-3;
   }
   &.category-link {
-    @include darkbox;
-    text-shadow: none;
+    // @include darkbox;
+
   }
   &.tag-link {
     background: black;

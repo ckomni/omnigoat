@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static#index'
 
-
   # static pages
   get 'about' => 'static#about'
   get 'contact' => 'static#contact'
@@ -24,6 +23,10 @@ Rails.application.routes.draw do
   # post pages (catch these before looking for 'category')
   resources :tags, param: :name, only: [:show, :index]
   resources :images, only: [:index, :create, :destroy, :show]
+
+  # namespace :images do
+  #   get '/:category/:post_id/:id.:extension', to: :show
+  # end
 
   # post pages (assumes category first)
   get 'all' => 'posts#index'

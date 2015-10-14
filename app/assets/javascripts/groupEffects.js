@@ -94,6 +94,7 @@ bubbleRotate.config = {
   steps: 100, // amount of steps to put between each bubble
 }
 bubbleRotate.calculate = function(instance) {
+  bubbleRotate.config.speed = instance.target.length/5
   var quantity = instance.target.length
   for (i = 0; i < quantity; i++ ) {
     distance = (Math.min(window.innerWidth, window.innerHeight)/2 * instance.config.distance);
