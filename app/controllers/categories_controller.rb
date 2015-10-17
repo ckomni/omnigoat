@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   include SessionsHelper
 
-  before_action :verify_category, except: [:index, :new, :create, :update]
+  before_action :verify_category, except: [:index, :new, :create, :update, :destroy]
   before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
   def index
