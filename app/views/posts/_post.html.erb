@@ -1,23 +1,17 @@
 
       <% image = @post.random_picture || false %>
-      <%= link_to post_url(@post.category.name, @post), class:"post-banner", data: {image: (image.pic.url if image), color: @post.category.color_hex } do %>
+      <%= link_to post_url(@post.category.name, @post), class:"post-banner", data: {color: @post.category.color_hex } do %>
+        <div class= "post-banner-background" data-image="<%= image.pic.url if image %>"></div>
         <div class="post-banner-text">
           <div class="post-banner-title"><%= @post.title %></div>
-          <div class="post-banner-detail"><%= @post.time_updated %></div>
+          <div class="post-banner-detail"><%= @post.post_time %></div>
         </div>
-        <%= link_to @post.category.name, posts_path(@post.category.name), class:"post-banner-badge", data: {color: @post.category.color_hex} %>
       <% end %>
 
-
-  <div class="text-copy">
-
-  </div>
-
-  <div class="post-details">
-    <div class="tag-container">
-      <%= link_to @post.category.name, posts_path(@post.category.name), class:"tag category", :data => {color: @post.category.color_hex} %>
-      <% @post.tags.each do |t| %>
-        <%= link_to t.name, tag_path(t.name), class:"tag" %>
-      <% end %>
-    </div>
-  </div>
+      <div class="post-banner-sublinks">
+        
+        <%= link_to @post.category.name, posts_path(@post.category.name), class:"post-banner-tag", data: {color: @post.category.color_hex} %>
+        <% @post.tags.each do |t| %>
+          <%= link_to t.name, tag_path(t.name), class:"post-banner-tag" %>
+        <% end %>
+      </div>

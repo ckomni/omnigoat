@@ -1,8 +1,9 @@
 @import 'brand';
 
 .navbar { // Physical bar that spans the page width. Becomes static at small size
-  //border-bottom: 1px solid $brand-dark-3;
-  background: $gradient-1;
+  border-bottom: 1px solid $brand-dark-3;
+  box-sizing: border-box;
+  background: $brand-dark-2;
   position: fixed;
   color: white;
   z-index: 9000;
@@ -17,7 +18,7 @@
 
   .navlinks { // Container for the links on the navbar. Responds to window width.
     display: flex;
-    flex-wrap: no-wrap;
+    flex-wrap: nowrap;
     margin: auto;
     width: 1024px;
     transition: width $time-m, max-width $time-m;
@@ -28,6 +29,9 @@
 
   .nav-section { // subset of links with dropdowns
     display: inline-block;
+    @include small {
+      flex: 1;
+    }
   }
 
   .btn {
@@ -63,6 +67,9 @@
       background-size: auto;
       background-position: center;
       background-repeat: no-repeat;
+      @include small {
+        width: 100%;
+      }
     }
   }
 

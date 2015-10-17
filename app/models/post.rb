@@ -20,7 +20,7 @@ class Post < ActiveRecord::Base
     puts "[T] looking for random picture..."
     self.tags.map(&:name).join(", ")
   end
-  
+
   def random_picture
     puts "[I] looking for random picture..."
     return nil unless self.images.any?
@@ -33,6 +33,10 @@ class Post < ActiveRecord::Base
     return nil unless self.images.any?
     offset = rand(self.images.count)
     self.images.offset(offset).first.pic.url
+  end
+
+  def post_time
+    self.updated_at > self.created_at ? "Updated: #{self.time_updated}" : "#{self.time_created}"
   end
 
   def time_updated

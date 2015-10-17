@@ -20,6 +20,7 @@
   padding: 5px;
   height: 250px;
   flex-basis: 25%;
+  // flex: 25%;
 
   @include small {
     flex-basis: 100%;
@@ -38,6 +39,7 @@
 }
 
 .panel {
+  @include invis-link;
   // @include darkbox;
   background: transparent;
   line-height: 1em;
@@ -47,11 +49,9 @@
   height: 100%;
   color: white;
   text-shadow: 0 1px 1px rgba(0,0,0, 0.5);
-  text-decoration: none;
   overflow: hidden;
   transition: 0.5s;
 
-  @include invis-link;
   @include small {
     border-bottom: 1px solid rgba(255,255,255, 0.3);
   }
@@ -88,60 +88,56 @@
   &.mesh {
     background-attachment: fixed;
     background-size: cover;
-    padding: 15px;
-    left: -15px;
-    filter: blur(2px);
-    -webkit-filter: blur(10px);
   }
 
 }
 
 .panel-details {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   z-index: 100;
   position: relative;
   width: 100%;
   height: 100%;
+  padding: 15px;
+  line-height: 1em;
 }
 
 .post-title {
   color: $brand-light-1;
   text-transform: uppercase;
   font-weight: 700;
-  padding-top: 15px;
-  padding-left: 15px;
+  margin-bottom: 0.5em;
 }
 
 .post-description {
   color: $brand-light-3;
   font-size: 14px;
-  padding-left: 15px;
-  padding-top: 5px;
+
 }
 
 .category-name {
+  color: $brand-light-1;
   text-transform: uppercase;
   font-size: 24px;
+  line-height:24px;
   display: block;
   width: 100%;
-  position: absolute;
-  bottom: 50%;
   text-align: center;
 }
 
 .category-posts {
+  color: $brand-light-3;
   display: block;
   width: 100%;
-  position: absolute;
-  top: 50%;
   text-align: center;
 }
 
 .tag-name {
   color: white;
   text-align: center;
-  position: relative;
-  top: 30%;
-  margin: auto;
   font-size: 24px;
   text-transform: uppercase;
   font-weight: 700;
@@ -149,11 +145,8 @@
 
 .tag-count {
   text-align: center;
-  position: relative;
-  top: 30%;
   font-size: 14px;
   color: #ddd;
-  padding: 15px;
 }
 
 //for tiny-square representations

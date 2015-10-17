@@ -43,7 +43,13 @@
         LoadNotifications(notifications)
         fadeNodes = document.querySelectorAll("[fade],[fade-children] > *");
         GroupAnimate(fadeNodes, "opacity", 1, {interval: 100})
+
+        $(window).resize(function(){
+          limitImages(imageNodes)
+        })
+
     });
+
 </script>
 
 </body>

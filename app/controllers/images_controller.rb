@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   include SessionsHelper
 
-  before_action :authorize
+  before_action :authorize, only: [:index, :destroy, :new, :create, :update]
 
   def index
     @images = Image.all
@@ -26,7 +26,7 @@ class ImagesController < ApplicationController
   def show
     @image = Image.find(params[:id])
     @post = @image.post
-    render :layout => false
+    render :layout => 'blank'
   end
 
   def destroy

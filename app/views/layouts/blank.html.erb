@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? content_for(:title) : "OmniGoat Design" %></title>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tags %>
+  <%= content_for :head %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body style="margin: 0">
+  <%= yield %>
+</body>
+</html>

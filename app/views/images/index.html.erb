@@ -24,7 +24,7 @@
 
   <div class="window">
     <div class="form">
-      <%= form_for @image, :html => {:multipart => true} do |i| %>
+      <%= form_for @image, :html => {multipart: true} do |i| %>
         <div class="group">
           <%= i.file_field :pic %>
         </div>
