@@ -1,7 +1,11 @@
 
       <% image = @post.random_picture || false %>
       <%= link_to post_url(@post.category.name, @post), class:"post-banner", data: {color: @post.category.color_hex } do %>
-        <div class= "post-banner-background" data-image="<%= image.pic.url if image %>"></div>
+        <% if image %>
+          <div class= "post-banner-background" data-image="<%= image.pic.url if image %>"></div>
+        <% else %>
+          <div class= "post-banner-icon" data-image="<%= @post.category.icon %>"></div>
+        <% end %>
         <div class="post-banner-text">
           <div class="post-banner-title"><%= @post.title %></div>
           <div class="post-banner-detail"><%= @post.post_time %></div>
@@ -9,7 +13,6 @@
       <% end %>
 
       <div class="post-banner-sublinks">
-        
         <%= link_to @post.category.name, posts_path(@post.category.name), class:"post-banner-tag", data: {color: @post.category.color_hex} %>
         <% @post.tags.each do |t| %>
           <%= link_to t.name, tag_path(t.name), class:"post-banner-tag" %>

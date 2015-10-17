@@ -33,18 +33,6 @@
     }
   }
 }
-.post-banner-tags {
-  @include no-select;
-  @include invis-link;
-  // @include ignore-window-edge;
-  margin-top: 1em;
-  box-sizing: border-box;
-  transition: $time-f;
-  @include small {
-
-  }
-
-}
 
 .post-banner-tag {
   @extend .tag;

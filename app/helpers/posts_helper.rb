@@ -28,4 +28,16 @@ module PostsHelper
 
   end
 
+  # Given an array of viewed post IDs, return a list of posts that have not been viewed recently
+  def recommend_posts(quantity, omit)
+    puts "[R] recommending posts..."
+    # First, find posts that haven't been viewed and order them by update time
+    fresh = Post.all.order(updated_at: :desc).where.not("id IN (?)", omit)
+    # Then, find posts that are on the viewed list and order them by order viewed
+    viewed = Post.all.where("id IN (?)", omit).index_by(&:id).slice(*omit).values.reverse
+    # concat the two lists, then return the amount specified
+    fresh.concat(viewed)
+    return fresh[0..(quantity-1)]
+  end
+
 end

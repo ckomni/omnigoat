@@ -59,6 +59,13 @@
   }
 }
 
+.post-banner-icon {
+  @extend .post-banner-background;
+  background-size: contain;
+  opacity: 0.2;
+  background-attachment: scroll;
+}
+
 .post-banner-text {
   display: flex;
   position: relative;

@@ -51,26 +51,6 @@ class Post < ActiveRecord::Base
     "#{self.title} (#{self.images.count})"
   end
 
-  # given the list of viewed posts, returns an array of the freshest posts
-  def self.freshness(viewed_list)
-    freshlist = []
-    stalelist = viewed_list.reverse
-    Post.all.order(updated_at: :desc).where.not("id IN (?)", viewed_list).each do |p|
-      freshlist.unshift(p.id)
-    end
-    return freshlist + stalelist
-  end
-
-  # returns a list of all posts in order of recommendation
-  # factors: 1: View status, 2: Category, 3: update time
-  def recommend_posts(quantity, omit)
-    puts "[R] recommending posts..."
-    fresh = Post.all.order(updated_at: :desc).where.not("id IN (?)", omit)
-    stale = Post.all.order(updated_at: :desc).where("id IN (?)", omit)
-    fresh.concat(stale)
-    return fresh[1..quantity]
-  end
-
   ## returns the next chronological post object
   def next(collection)
     puts "[N] looking for next post..."

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  include SessionsHelper
+  include SessionsHelper, PostsHelper
 
   before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
@@ -57,6 +57,8 @@ class PostsController < ApplicationController
   def show
     @category = Category.includes(:posts).find_by(name: params[:category])
     @post = Post.includes(:category, :images, :tags).find(params[:id])
+
+    # session[:viewed] is an array of post IDs ordered by most-recently-viewed first
     session[:viewed] = session[:viewed]||[] # load or initialize list of viewed posts
     if session[:viewed].include?(@post.id)
       pos = session[:viewed].index(@post.id)
@@ -64,7 +66,7 @@ class PostsController < ApplicationController
     else
       session[:viewed].unshift(@post.id)
     end
-    @posts = Post.all.includes(:category, :images).find(Post.freshness(session[:viewed])[1..4])
+    @posts = recommend_posts(4, session[:viewed])
     add_cheevo("seenitall", "I've Seen Everything") if session[:viewed].length == Post.all.count
   end
 

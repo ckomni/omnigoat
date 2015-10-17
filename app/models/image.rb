@@ -2,7 +2,7 @@ class Image < ActiveRecord::Base
   belongs_to :post
   has_attached_file :pic,
     # if image is missing (should not happen)
-    :default_url => "/images/missing.png",
+    :default_url => "/assets/missing.png",
     :s3_host_name => 's3.amazonaws.com',
     :url => ":s3_domain_url",
     # # path in website
