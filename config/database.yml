@@ -22,11 +22,11 @@ development:
 test:
   <<: *default
   database: omnigoat
-  user: admin
+  user: <% ENV["DATABASE_USER"] %>
   password: <%= ENV["DATABASE_PASSWORD"] %>
 
 production:
   <<: *default
   database: omnigoat
-  user: admin
+  user: <% ENV["DATABASE_USER"] %>
   password: <%= ENV["DATABASE_PASSWORD"] %>
